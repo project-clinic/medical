@@ -5,6 +5,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 module.exports = () => {
-  mongoose.connect(process.env.MONGO_URI)
-    .then( () => console.log('Connected to db!'))
+  mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
+    .then(() => console.log('Connected to db!'))
 }

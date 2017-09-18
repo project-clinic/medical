@@ -25,7 +25,11 @@ const userSchema = new Schema ({
     height: Number,
     weight: Number
   },
-  background: String
+  background: String,
+  history: {
+    type: Boolean,
+    default: false
+  }
 })
 
 userSchema.set('timestamps', true)

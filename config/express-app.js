@@ -9,6 +9,10 @@ const mongoose = require('mongoose')
 const layout = require("express-ejs-layouts")
 const rootPath = require('path').normalize(__dirname + '/../')
 
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
+
 module.exports = app => {
   app.set('views', rootPath + 'views')
   app.set('view engine', 'ejs')
@@ -20,7 +24,7 @@ module.exports = app => {
   app.use(cookieParser())
   app.use(express.static(rootPath + 'public'))
   app.use(session({
-    secret: "linkedin-auth",
+    secret: process.env.SECRET_SESSION,
     cookie: { maxAge: 60000 },
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
@@ -28,7 +32,7 @@ module.exports = app => {
     })
   }))
   app.use((req,res,next) => {
-    res.locals.title = 'Clinic Everywhere'
+    res.locals.title = 'Patients Everywhere'
     next()
   })
 }

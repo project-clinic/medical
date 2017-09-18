@@ -1,7 +1,7 @@
 const app = require('express')()
 const PATHS = require('./routes/paths')
 
-require('./config/express-conect')
+require('./config/express-connect')()
 require('./config/express-app')(app)
 
 const index = require('./routes/index')
