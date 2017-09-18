@@ -5,7 +5,8 @@ require('./config/express-connect')()
 require('./config/express-app')(app)
 
 const index = require('./routes/index')
-app.use(PATHS.ROOT_PATH, index);
+
+app.use(PATHS.ROOT_PATH, index)
 
 require('./middlewares/error-handler')(app)
 

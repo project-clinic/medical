@@ -1,0 +1,15 @@
+<form action="/login" method="POST" id="form">
+  <label for="email">Email</label><br>
+  <input type="email" name="email" id="email" placeholder="example@example.com">
+  <br><br>
+
+  <label for="password">Password</label><br>
+  <input type="password" name="password" placeholder="your password">
+  <br><br>
+
+  <% if (typeof errorMessage !== "undefined") { %>
+    <%= errorMessage %>
+  <% } %>
+
+  <button>Log in</button>
+</form>
