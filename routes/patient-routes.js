@@ -3,8 +3,8 @@ const { ensureLoggedIn } = require('connect-ensure-login')
 const PatientController = require('../controllers/PatientController')
 
 router.get('/patients', ensureLoggedIn(), PatientController.listPatientGet)
-router.get('/patient/new', ensureLoggedIn(), PatientController.newPatientGet)
-router.post('/patient/new', ensureLoggedIn('/login'), PatientController.newPatientPost)
+router.get('/patient/new', PatientController.newPatientGet)
+router.post('/patient/new', PatientController.newPatientPost)
 
 
 module.exports = router
