@@ -27,15 +27,6 @@ module.exports = {
           address, phone, birthday, gender, height, weight
         } = req.body
 
-        // const newUser = new User({
-        //   name, surname, email, idCard,
-        //   contact: {
-        //     address,
-        //     phone
-        //   }
-        // })
-
-
         const newUser = new User({
           name, surname, email, idCard, background,
           contact: { address, phone },
