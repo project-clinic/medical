@@ -6,5 +6,10 @@ module.exports = {
   loginPost: (req, res, next) => {
     if(req.user.role === 'Admin') { res.redirect('/') }
     else { res.redirect('/login') }
+  },
+
+  logoutPost: (req, res, next) => {
+    req.logout()
+    res.redirect('/')
   }
 }
