@@ -17,10 +17,10 @@ const userSchema = new Schema ({
   },
   professional: {
     collegiate: String,
-    specialty: {
+    speciality: {
       type: String,
       enum: ['Cadiology', 'Geriatric', 'Neurology', 'Pediatric', 'Physical Medicine',
-        'Psychiatry', 'Dentist', 'General Practice' ]
+        'Psychiatry', 'Dentist', 'General Practice' ],
       default: 'General Practice'
     }
   },
@@ -29,8 +29,7 @@ const userSchema = new Schema ({
     birthday: Date,
     gender: {
       type: String,
-      enum: ['Female', 'Male'],
-      default: 'Female'
+      enum: ['Female', 'Male']
     },
     height: Number,
     weight: Number

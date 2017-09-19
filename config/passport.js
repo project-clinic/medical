@@ -13,28 +13,6 @@ passport.deserializeUser((id, cb) => {
   });
 })
 
-// passport.use('local-signup', new LocalStrategy({ passReqToCallback: true }, 
-//   (req, email, password, next) => { process.nextTick(() => {
-//     User.findOne({'email': email}, (err, user) => {
-//       if (err) { return next(err) }
-//       if (user) { return next(null, false) } 
-//       else {
-//         const { email, password } = req.body
-//         const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
-//         const newUser = new User({
-//           email,
-//           password: hashPass
-//         })
-
-//         newUser.save((err) => {
-//           if (err) { return next(err) }
-//           return next(null, newUser)
-//         })
-//       }
-//     })
-//   })
-// }))
-
 passport.use('local-login', new LocalStrategy({
   usernameField: 'email'
   },

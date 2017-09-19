@@ -1,5 +1,36 @@
 <form action="/doctor/new" method="post">
   <label for="name">Name</label>
-  <input type="text" name="name" placeholder="doctor's name">
-  <label for=""></label>
+  <input type="text" name="name" id="name" placeholder="doctor's name">
+
+  <label for="surname">Surname</label>
+  <input type="text" name="surname" id="surname" placeholder="doctor's surname">
+
+  <label for="speciality">Speciality</label>
+  <select name="speciality">
+    <option value="Cardiology">Cardiology</option>
+    <option value="Geriatric">Geriatric</option>
+    <option value="Neurology">Neurology</option>
+    <option value="Pediatric">Pediatric</option>
+    <option value="Physical Medicine">Physical Medicine</option>
+    <option value="Psychiatry">Psychiatry</option>
+    <option value="Dentist">Dentist</option>
+    <option value="General Practice" selected>General Practice</option>
+
+  </select>
+
+  <label for="collegiate">Collegiate Number</label>
+  <input type="text" name="collegiate" id="collegiate" placeholder="collegiate number">
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" placeholder="example@mail.com">
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password">
+
+  <% if(typeof errorMessage !== 'undefined') {%>
+      <%= errorMessage %>
+  <% } %>
+  
+  <button>Add Doctor</button>
+
 </form>
