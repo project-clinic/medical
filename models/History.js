@@ -2,12 +2,9 @@ const mongoose = require('mongoose')
 const Schema   = mongoose.Schema
 
 const historySchema = new Schema ({
-  // patient
-  // items:[{type:Schema.Types.ObjectId, ref:'Todo'}]
+  patientId: { type: Schema.Types.ObjectId, ref:'User' },
+  pathologies: [{ type:Schema.Types.ObjectId, ref:'Pathology' }]
 })
-
 historySchema.set('timestamps', true)
 
-const History = mongoose.model('History', historySchema)
-
-module.exports = History
+module.exports = mongoose.model('History', historySchema)
