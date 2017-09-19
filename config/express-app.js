@@ -8,6 +8,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const layout = require("express-ejs-layouts")
 const rootPath = require('path').normalize(__dirname + '/../')
+const pathsProvider = require('../middlewares/paths-provider')
 
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
@@ -31,6 +32,7 @@ module.exports = app => {
       ttl: 24 * 60 * 60 // 1 day
     })
   }))
+  app.use(pathsProvider)
   app.use((req,res,next) => {
     res.locals.title = 'Patients Everywhere'
     next()
