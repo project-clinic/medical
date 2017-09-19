@@ -13,9 +13,19 @@ const userSchema = new Schema ({
   },
   contact: {
     address: String,
-    phone: Number,
+    phone: Number
+  },
+  professional: {
+    collegiate: String,
+    specialty: {
+      type: String,
+      enum: ['Cadiology', 'Geriatric', 'Neurology', 'Pediatric', 'Physical Medicine',
+        'Psychiatry', 'Dentist', 'General Practice' ]
+      default: 'General Practice'
+    }
   },
   personaldata: {
+    dni: String,
     birthday: Date,
     gender: {
       type: String,
