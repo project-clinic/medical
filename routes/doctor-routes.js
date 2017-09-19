@@ -6,4 +6,7 @@ router.get('/doctors', DoctorController.listDoctorGet)
 router.get('/doctor/new', DoctorController.newDoctorGet)
 router.post('/doctor/new', DoctorController.newDoctorPost)
 
+
+
+
 module.exports = router

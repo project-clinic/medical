@@ -5,7 +5,7 @@ module.exports = {
 
   loginPost: (req, res, next) => {
     if(req.user.role === 'Admin') { res.redirect('/doctors') }
-    else { res.redirect('/login') }
+    else { res.redirect('/patients') }
   },
 
   logoutPost: (req, res, next) => {
