@@ -13,7 +13,7 @@ const hashPass = bcrypt.hashSync(password, salt)
 const admin = {
   name: 'PatientsEverywhere',
   password: hashPass,
-  email: 'admin@pw.com',
+  idCard: '1234',
   role: 'Admin'
 }
 

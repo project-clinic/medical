@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema
 const userSchema = new Schema ({
   name: String,
   surname: String,
+  idCard: String,
   password: String,
   email: String,
   role: {
@@ -25,7 +26,6 @@ const userSchema = new Schema ({
     }
   },
   personaldata: {
-    dni: String,
     birthday: Date,
     gender: {
       type: String,
