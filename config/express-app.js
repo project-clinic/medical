@@ -1,14 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
 const upload = require('morgan')
 const path = require('path')
 const mongoose = require('mongoose')
 const layout = require("express-ejs-layouts")
 const rootPath = require('path').normalize(__dirname + '/../')
+const session = require('../middlewares/session');
 const pathsProvider = require('../middlewares/paths-provider')
+const authenticated = require('../middlewares/authenticated');
+const passport = require('passport')
+require('./passport')
 
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
@@ -24,14 +26,10 @@ module.exports = app => {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(cookieParser())
   app.use(express.static(rootPath + 'public'))
-  app.use(session({
-    secret: process.env.SECRET_SESSION,
-    cookie: { maxAge: 60000 },
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
-    })
-  }))
+  app.use(session(mongoose.connection))
+  app.use(passport.initialize())
+  app.use(passport.session())
+  app.use(authenticated)
   app.use(pathsProvider)
   app.use((req,res,next) => {
     res.locals.title = 'Patients Everywhere'
