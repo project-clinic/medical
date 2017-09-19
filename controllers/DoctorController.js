@@ -11,9 +11,9 @@ module.exports = {
   )},
 
   newDoctorPost: (req, res, next) => {
-    const idcard = req.body.idcard
+    const idCard = req.body.idCard
 
-    User.findOne({ idcard }, (err, user) => {
+    User.findOne({ idCard }, (err, user) => {
       if(err) { return next(err) }
       if(user) {
         res.render('doctor/new-doctor', {
@@ -23,12 +23,12 @@ module.exports = {
       }
       else {
         const {
-          name, surname, idcard, password, collegiate, speciality
+          name, surname, idCard, password, collegiate, speciality
         } = req.body
 
         const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
         const newUser = new User({
-          name, surname, idcard, collegiate,
+          name, surname, idCard, collegiate,
           professional: {
             speciality
           },
