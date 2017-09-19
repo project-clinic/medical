@@ -7,14 +7,9 @@ const mongoose = require('mongoose')
 const layout = require("express-ejs-layouts")
 const rootPath = require('path').normalize(__dirname + '/../')
 const session = require('../middlewares/session');
-const pathsProvider = require('../middlewares/paths-provider')
 const authenticated = require('../middlewares/authenticated');
 const passport = require('passport')
 require('./passport')
-
-if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config()
-}
 
 module.exports = app => {
   app.set('views', rootPath + 'views')
@@ -30,7 +25,6 @@ module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
   app.use(authenticated)
-  app.use(pathsProvider)
   app.use((req,res,next) => {
     res.locals.title = 'Patients Everywhere'
     next()
