@@ -14,12 +14,12 @@ passport.deserializeUser((id, cb) => {
 })
 
 passport.use('local-login', new LocalStrategy({
-  usernameField: 'email'
+  usernameField: 'idcard'
   },
   (username, password, next) => {
-    User.findOne({ 'email':username }, (err, user) => {
+    User.findOne({ 'idcard':username }, (err, user) => {
       if (err) { return next(err) }
-      if (!user) { return next(null, false, { message: "Incorrect email" })}
+      if (!user) { return next(null, false, { message: "Incorrect ID Card" })}
       if (!bcrypt.compareSync(password, user.password)) {
         return next(null, false, { message: "Incorrect password" })
       }

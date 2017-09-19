@@ -11,24 +11,24 @@ module.exports = {
   )},
 
   newDoctorPost: (req, res, next) => {
-    const email = req.body.email
+    const idcard = req.body.idcard
 
-    User.findOne({ email }, (err, user) => {
+    User.findOne({ idcard }, (err, user) => {
       if(err) { return next(err) }
       if(user) {
         res.render('doctor/new-doctor', {
           title: 'Add a new doctor',
-          errorMessage: 'Email already exist'
+          errorMessage: 'Id Card already exist'
         })
       }
       else {
         const {
-          name, surname, email, password, collegiate, speciality
+          name, surname, idcard, password, collegiate, speciality
         } = req.body
 
         const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
         const newUser = new User({
-          name, surname, email, collegiate,
+          name, surname, idcard, collegiate,
           professional: {
             speciality
           },
