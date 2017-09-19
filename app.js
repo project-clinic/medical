@@ -3,9 +3,9 @@ const app = require('express')()
 require('./config/express-connect')()
 require('./config/express-app')(app)
 
-const index = require('./routes/index')
+const indexRoutes = require('./routes/index-routes')
 
-app.use('/', index)
+app.use('/', indexRoutes)
 
 require('./middlewares/error-handler')(app)
 

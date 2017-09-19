@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const IndexController = require('../controllers/IndexController')
 
-const auth = require('./auth')
+const authRoutes = require('./auth-routes')
 
 router.get('/', IndexController.index)
 
-router.use('/', auth)
+router.use('/', authRoutes)
 
 module.exports = router
