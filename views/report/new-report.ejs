@@ -1,1 +1,16 @@
-<p>Hola</p>
+<form action="/patient/new" method="post" enctype="multipart/form-data">
+  <label for="consultation">Consultation</label>
+  <textarea name="consultation" id="consultation" cols="30" rows="10" 
+            placeholder="What have you work during the session">
+  </textarea>
+
+  <label for="treatment">Treatment</label>
+  <textarea name="treatment" id="treatment" cols="30" rows="10" 
+            placeholder="What treatment should the patient follow">
+  </textarea>
+
+  <label for="files">Upload Files</label>
+  <input type="file" name="files" id="files"> 
+
+  <button>New Report</button>
+</form>

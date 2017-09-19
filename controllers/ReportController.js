@@ -6,5 +6,9 @@ const Report = require('../models/Report')
 module.exports = {
   newReportGet: (req, res) => { res.render('report/new-report', {
     title: 'New report' })
+  },
+
+  newReportPost: (req, res, next) => {
+
   }
 }
