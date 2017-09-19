@@ -5,7 +5,10 @@ const reportSchema = new Schema ({
   doctorId: { type: Schema.Types.ObjectId, ref:'User' },
   consultation: String,
   treatment: String,
-  files: [{ type:File }]
+  files: [{ 
+    pic_path: String,
+    pic_name: String
+  }]
 })
 reportSchema.set('timestamps', true)
 
