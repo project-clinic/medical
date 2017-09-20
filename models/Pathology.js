@@ -3,8 +3,11 @@ const Schema   = mongoose.Schema
 
 const pathologySchema = new Schema ({
   name: String,
-  historyId: { type: Schema.Types.ObjectId, ref:'User' },
-  resports: [{ type: Schema.Types.ObjectId, ref:'Report' }]
+  patientId: { type: Schema.Types.ObjectId, ref:'User' },
+  status: {
+    type: String,
+    enum: ['latent', 'desease', 'remit', 'cured']
+  }
 })
 pathologySchema.set('timestamps', true)
 

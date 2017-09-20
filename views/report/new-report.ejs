@@ -1,10 +1,14 @@
-<form action="/report/new" method="post">
+<form action="/report/new" method="post" enctype="multipart/form-data">
   <label for="consultation">Consultation</label>
-  <input type="text" name="consultation">
+  <textarea name="consultation" id="consultation" cols="30" rows="10" 
+            placeholder="what have you worked during the session"></textarea>
 
   <label for="treatment">Treatment</label>
-  <textarea name="treatment" id="treatment" cols="30" rows="10">
-  </textarea>
+  <textarea name="treatment" id="treatment" cols="30" rows="10"
+            placeholder="treatment to follow"></textarea>
+
+  <label for="file">Files</label>
+  <input type="file" name="file" id="files">
 
   <button>New Report</button>
 </form>

@@ -1,7 +1,9 @@
+const multer = require('multer')
 const User = require('../models/User')
 const History = require('../models/History')
 const Pathology = require('../models/Pathology')
 const Report = require('../models/Report')
+const upload = multer({ dest: '../public/uploads/' });
 
 module.exports = {
   newReportGet: (req, res) => { res.render('report/new-report', { 
