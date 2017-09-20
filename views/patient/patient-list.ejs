@@ -1,1 +1,14 @@
 <a href="/patient/new">Add New Patient</a>
+
+<ul>
+  <% patients.forEach(patient => { %>
+    <li>
+      <%= patient.name %>
+      <%= patient.surname %>
+      <%= patient.email %>
+      <%= patient.addess %>
+      <%= patient.phone %>
+      <a href="/<%= patient._id %>/delete/">Delete</a>
+    </li>
+  <%  }) %>
+</ul>
