@@ -42,7 +42,7 @@ module.exports = {
         })
 
         newUser.save()
-          .then(() => next(null, newUser))
+          .then(() => res.redirect('/doctors'))
           .catch(err => next(err))
       }
     })
