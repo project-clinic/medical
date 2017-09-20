@@ -1,3 +1,14 @@
 
-
 <a href="/doctor/new">New Doctor</a>
+
+<ul>
+  <% doctors.forEach(doctor => { %>
+    <li>
+      <%= doctor.name %>
+      <%= doctor.surname %>
+      <%= doctor.collegiate %>
+      <%= doctor.professional.speciality %>
+
+    </li>
+  <%  }) %>
+</ul>
