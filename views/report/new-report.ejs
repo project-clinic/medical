@@ -1,6 +1,17 @@
-<form action="/report/new" method="post" enctype="multipart/form-data">
-  <label for="consultation">Consultation</label>
-  <textarea name="consultation" id="consultation" cols="30" rows="10" 
+<form action="/<%= patientId %>/report/new" method="post">
+  <% if(pathoId == undefined) { %>
+    <label for="pathology">Pathology/ies</label>
+    <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
+  <% } else { %>
+    <input type="text" name="pathology" value="<%= pathoId %>" hidden>
+  <% } %>
+
+  <label for="symptoms">Symptoms</label>
+  <textarea name="symptoms" id="symptoms" cols="30" rows="10" 
+            placeholder="reason for consultation"></textarea>
+
+  <label for="consulty">Consultaty Work</label>
+  <textarea name="consulty" id="consulty" cols="30" rows="10" 
             placeholder="what have you worked during the session"></textarea>
 
   <label for="treatment">Treatment</label>
@@ -9,6 +20,10 @@
 
   <label for="file">Files</label>
   <input type="file" name="file" id="files">
+
+  <% if(typeof errorMessage !== 'undefined') {%>
+      <%= errorMessage %>
+  <% } %>
 
   <button>New Report</button>
 </form>

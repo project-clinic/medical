@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Report = require('../models/Report')
 const bcrypt = require('bcrypt')
 
 module.exports = {
@@ -44,5 +45,24 @@ module.exports = {
           .catch(err => next(err))
       }
     })
+  },
+
+  historyGet: (req, res, next) => { 
+    const patientId = req.params.id
+    const array = []
+    Report.find({}).populate('pathologyId')
+      .then(reports => {
+        const pathosUser = []
+        reports.map(r => r.pathologyId).forEach(patho => {
+          const patId = patho.patientId
+          if(patId == patientId) { pathosUser.push(patho) }
+        })
+        console.log(pathosUser)
+        res.render('patient/history', {
+          title: 'History',
+          patient: patientId,
+          pathos: pathosUser
+        })
+      })
   }
 }
