@@ -18,7 +18,7 @@ module.exports = {
       pathology, symptoms, consulty, treatment
     } = req.body
 
-    const patientId = '59c252558cc4943a667c3d84'
+    const patientId = '59c2838e00a5f1684135e4b9'
     let pathologyId = ''
 
     Pathology.findOne({ 'name':pathology, 'patientId': patientId }, (err, patho) => {
