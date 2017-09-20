@@ -9,8 +9,7 @@ const userSchema = new Schema ({
   email: String,
   role: {
     type: String,
-    enum: ['Admin', 'Doctor', 'Patient'],
-    default: 'Patient'
+    enum: ['Admin', 'Doctor', 'Patient']
   },
   contact: {
     address: String,
@@ -21,8 +20,7 @@ const userSchema = new Schema ({
     speciality: {
       type: String,
       enum: ['Cadiology', 'Geriatric', 'Neurology', 'Pediatric', 'Physical Medicine',
-        'Psychiatry', 'Dentist', 'General Practice' ],
-      default: 'General Practice'
+        'Psychiatry', 'Dentist', 'General Practice' ]
     }
   },
   personaldata: {

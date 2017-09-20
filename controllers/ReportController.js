@@ -1,9 +1,8 @@
 const multer = require('multer')
 const User = require('../models/User')
-const History = require('../models/History')
 const Pathology = require('../models/Pathology')
 const Report = require('../models/Report')
-const upload = multer({ dest: '../public/uploads/' });
+const upload = multer({ dest: '../public/uploads/' })
 
 module.exports = {
   newReportGet: (req, res) => { res.render('report/new-report', { 
@@ -11,23 +10,34 @@ module.exports = {
   },
   
   newReportPost: (req, res, next) => {
-    // const patientId = req.params.patientId
-    // const pathologyId = req.params.pathologyId
-    const doctorId = req.session.currentUser._id
+    // const patientId = req.params.id
+    // const doctorId = req.user._id
     const {
-      consultation, treatment
+      pathology, symptoms, consulty, treatment
     } = req.body
 
-    console.log(
-      consultation
-    )
-    const newReport = new Report({
-      doctorId, consultation, treatment
-    })
-    
-    newReport.save()
-      .then(() => next(null, newReport))
-      .catch(err => next(err))
+    const patientId = '59c252558cc4943a667c3d84'
 
+    let pathologyId = ''
+    if(req.params.pathId) { pathologyId = req.params.pathId }
+
+    Pathology.findOne({ 'name':pathology, 'patientId': patientId }, (err, patho) => {
+      if(err) { return next(err) }
+      if(!patho) {
+        const newPathology = new Pathology({
+          name: pathology,
+          patientId: patientId
+        })
+        newPathology.save()
+          .then(p => pathologyId = p._id)
+          .catch(err => next(err))
+      }
+      const newReport = new Report({
+        consultyWork: consulty, treatment, symptoms, pathologyId
+      })
+      newReport.save()
+        .then(() => res.redirect('/report/new'))
+        .catch(err => next(err))
+    })
   }
 }

@@ -3,7 +3,7 @@ const Schema   = mongoose.Schema
 
 const reportSchema = new Schema ({
   doctorId: { type: Schema.Types.ObjectId, ref:'User' },
-  pathologyId: [{ type: Schema.Types.ObjectId, ref:'Pathology' }],
+  pathologyId: { type: Schema.Types.ObjectId, ref:'Pathology' },
   consultyWork: String,
   symptoms: String,
   treatment: String,
