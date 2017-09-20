@@ -17,26 +17,19 @@ module.exports = {
     } = req.body
 
     const patientId = '59c252558cc4943a667c3d84'
-
     let pathologyId = ''
-    if(req.params.pathId) { pathologyId = req.params.pathId }
 
     Pathology.findOne({ 'name':pathology, 'patientId': patientId }, (err, patho) => {
       if(err) { return next(err) }
-      if(!patho) {
-        const newPathology = new Pathology({
-          name: pathology,
-          patientId: patientId
-        })
-        newPathology.save()
-          .then(p => pathologyId = p._id)
-          .catch(err => next(err))
-      }
-      const newReport = new Report({
-        consultyWork: consulty, treatment, symptoms, pathologyId
-      })
-      newReport.save()
-        .then(() => res.redirect('/report/new'))
+      new Pathology({ name: pathology, patientId: patientId })
+        .save()
+        .then(p => pathologyId = p._id)
+        .then(() => new Report({
+            consultyWork: consulty, treatment, symptoms, pathologyId }
+          )
+          .save()
+          .then(() => res.redirect('/report/new'))
+        )
         .catch(err => next(err))
     })
   }
