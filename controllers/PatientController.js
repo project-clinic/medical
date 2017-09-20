@@ -37,12 +37,8 @@ module.exports = {
           contact: { address, phone },
           personaldata: {
             birthday, gender, height, weight
-          },
-          history: true
+          }
         })
-
-        console.log(newUser)
-
         newUser.save()
           .then(() => next(null, newUser))
           .catch(err => next(err))
