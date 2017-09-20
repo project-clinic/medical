@@ -40,7 +40,7 @@ module.exports = {
           password: hashPass,
           role: 'Doctor'
         })
-
+        
         newUser.save()
           .then(() => next(null, newUser))
           .catch(err => next(err))
