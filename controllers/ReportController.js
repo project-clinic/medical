@@ -5,15 +5,10 @@ const Report = require('../models/Report')
 const upload = multer({ dest: '../public/uploads/' })
 
 module.exports = {
-<<<<<<< HEAD
-  newReportGet: (req, res) => { res.render('report/new-report', {
-    title: 'New report' })
-=======
   newReportGet: (req, res) => { res.render('report/new-report', { 
     title: 'New report',
     patientId: req.params.id,
     pathoId: undefined })
->>>>>>> dev
   },
 
   newReportPost: (req, res, next) => {
@@ -23,21 +18,8 @@ module.exports = {
       pathology, symptoms, consulty, treatment
     } = req.body
 
-<<<<<<< HEAD
-    console.log(
-      consultation
-    )
-    const newReport = new Report({
-      doctorId, consultation, treatment
-    })
-
-    newReport.save()
-      .then(() => next(null, newReport))
-      .catch(err => next(err))
-=======
     const patientId = '59c2838e00a5f1684135e4b9'
     let pathologyId = ''
->>>>>>> dev
 
     Pathology.findOne({ 'name':pathology, 'patientId': patientId }, (err, patho) => {
       if(err) { return next(err) }
