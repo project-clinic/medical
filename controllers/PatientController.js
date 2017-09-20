@@ -2,9 +2,14 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
 module.exports = {
-  listPatientGet: (req, res) => { res.render('patient/patient-list', {
-    title: 'Patient list' }
-  )},
+  listPatientGet: (req, res) => {
+    User.find({ 'role': 'Patient'})
+      .then(patient => { res.render('patient/patient-list', {
+        title: 'Patients list',
+        patients: patient })
+      })
+      .catch(err => next(err))
+},
 
   newPatientGet: (req, res, next) => { res.render('patient/new-patient', {
     title: 'Add a new patient'}
@@ -35,6 +40,8 @@ module.exports = {
           },
           history: true
         })
+
+        console.log(newUser)
 
         newUser.save()
           .then(() => next(null, newUser))
