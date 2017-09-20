@@ -1,6 +1,10 @@
-<form action="/report/new" method="post">
-  <label for="pathology">Pathology/ies</label>
-  <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
+<form action="/<%= patientId %>/report/new" method="post">
+  <% if(pathoId !== undefined) { %>
+    <label for="pathology">Pathology/ies</label>
+    <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
+  <% } else { %>
+    <input type="text" name="pathology" value="<%= pathoId %>" hidden>
+  <% } %>
 
   <label for="symptoms">Symptoms</label>
   <textarea name="symptoms" id="symptoms" cols="30" rows="10" 

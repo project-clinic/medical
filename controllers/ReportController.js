@@ -6,7 +6,9 @@ const upload = multer({ dest: '../public/uploads/' })
 
 module.exports = {
   newReportGet: (req, res) => { res.render('report/new-report', { 
-    title: 'New report' })
+    title: 'New report',
+    patientId: req.params.id,
+    pathoId: undefined })
   },
   
   newReportPost: (req, res, next) => {
