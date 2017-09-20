@@ -1,14 +1,19 @@
 const User = require('../models/User')
 
 module.exports = {
-  deleteUser: (req, res) => {
-    const userId = req.params.userId
+  deleteUser: (req, res, next) => {
+    const userId = req.params.id
+    console.log(req.user)
 
     User.findByIdAndRemove(userId, (err, user) => {
       if (err) {
-        return next(err);
+        return next(err)
       }
-      return res.redirect('/doctors');
-    });
+      if(req.user.role === "Admin") {
+        res.redirect('/doctors')
+      } else {
+        return res.redirect('/patients')
+      }
+    })
   }
 }

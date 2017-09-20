@@ -2,7 +2,7 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
 module.exports = {
-  listDoctorGet: (req, res) => {
+  listDoctorGet: (req, res, next) => {
     User.find({ 'role': 'Doctor'})
       .then(doctor => { res.render('doctor/doctor-list', {
         title: 'Doctors list',
@@ -46,9 +46,5 @@ module.exports = {
           .catch(err => next(err))
       }
     })
-  },
-
-  deleteDoctorPost: (req, res, next) => {
-
   }
 }
