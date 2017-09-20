@@ -1,16 +1,14 @@
-<form action="/patient/new" method="post" enctype="multipart/form-data">
+<form action="/report/new" method="post" enctype="multipart/form-data">
   <label for="consultation">Consultation</label>
   <textarea name="consultation" id="consultation" cols="30" rows="10" 
-            placeholder="What have you work during the session">
-  </textarea>
+            placeholder="what have you worked during the session"></textarea>
 
   <label for="treatment">Treatment</label>
-  <textarea name="treatment" id="treatment" cols="30" rows="10" 
-            placeholder="What treatment should the patient follow">
-  </textarea>
+  <textarea name="treatment" id="treatment" cols="30" rows="10"
+            placeholder="treatment to follow"></textarea>
 
-  <label for="files">Upload Files</label>
-  <input type="file" name="files" id="files"> 
+  <label for="file">Files</label>
+  <input type="file" name="file" id="files">
 
   <button>New Report</button>
 </form>
