@@ -77,6 +77,7 @@ module.exports = {
         })
       })
       .catch(err => next(err))
+
     },
 
   editPatientPost: (req, res, next) => {
