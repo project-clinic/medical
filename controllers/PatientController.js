@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Report = require('../models/Report')
 const bcrypt = require('bcrypt')
+const _ = require('lodash/array')
 
 module.exports = {
   listPatientGet: (req, res) => {
@@ -54,7 +55,7 @@ module.exports = {
     .then(user => {
       Report.find({}).populate('pathologyId')
       .then(reports => {
-        reports.map(r => r.pathologyId).forEach(patho => {
+        _.uniq(reports.map(r => r.pathologyId).sort()).forEach(patho => {
           const patId = patho.patientId
           if(patId == patientId) { pathosUser.push(patho) }
         })
@@ -95,7 +96,6 @@ module.exports = {
     }
 
     User.findByIdAndUpdate(patientId, updates, (err, user) => {
-      console.log(updates)
       if (err){ return next(err); }
       return res.redirect('/patients');
     })

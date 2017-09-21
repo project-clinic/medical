@@ -14,14 +14,14 @@ module.exports = {
           res.render('report/new-report', {
           title: 'New report',
           patient: patho.patientId,
-          pathoId: req.params.id
+          patho: patho.name
           })
         }) 
       }
       else { res.render('report/new-report', {
         title: 'New Report',
         patient: user,
-        pathoId: undefined
+        patho: undefined
       })}
     })
     .catch(err => next(err))
@@ -35,19 +35,30 @@ module.exports = {
     } = req.body
 
     let pathologyId = ''
-    Pathology.findOne({ 'name':pathology, 'patientId': patientId }, (err, patho) => {
-      if(err) { return next(err) }
-      new Pathology({ name: pathology, patientId: patientId })
+    Pathology.findOne({ 'name':pathology, 'patientId': patientId })
+    .then(patho => {
+      if(patho == undefined) {
+        new Pathology({ name: pathology, patientId: patientId })
         .save()
-        .then(p => pathologyId = p._id)
-        .then(() => new Report({
-           consultyWork: consulty, treatment, symptoms, pathologyId,
-           doctorId }
-        )
+        .then(p => { 
+          pathologyId = p._id
+          new Report({
+            consultyWork: consulty, treatment, symptoms, pathologyId,
+            doctorId }
+          )
+          .save()
+          .then(() => res.redirect(`/${patientId}/history`))
+        })
+        .catch(err => next(err))
+      } else {
+        new Report({
+          consultyWork: consulty, treatment, symptoms, doctorId, 
+          pathologyId: patho._id
+        })
         .save()
         .then(() => res.redirect(`/${patientId}/history`))
-        )
         .catch(err => next(err))
+      }
     })
   }
 }

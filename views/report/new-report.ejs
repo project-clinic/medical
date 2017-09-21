@@ -1,9 +1,9 @@
 <form action="/<%= patient._id %>/report/new" method="post">
-  <% if(pathoId == undefined) { %>
+  <% if(patho == undefined) { %>
     <label for="pathology">Pathology/ies</label>
     <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
   <% } else { %>
-    <input type="text" name="pathology" value="<%= pathoId %>" hidden>
+    <input type="text" name="pathology" value="<%= patho %>" hidden>
   <% } %>
 
   <label for="symptoms">Symptoms</label>
