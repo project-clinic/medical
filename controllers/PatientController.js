@@ -84,11 +84,13 @@ module.exports = {
     const patientId = req.params.id
 
     const {
-      name, surname, email, speciality
+      name, surname, email, address, phone,
+      birthday, gender, height, weight, background
     } = req.body
 
     const updates = { name, surname, email,
-      professional: {speciality}
+      personaldata: {birthday, gender, height, weight},
+      background
     }
 
     User.findByIdAndUpdate(patientId, updates, (err, user) => {
