@@ -5,8 +5,15 @@
     <li>
       <%= patient.name %>
       <%= patient.surname %>
-      <%= patient.addess %>
-      <%= patient.phone %>
+      <%= patient.email %>
+      <%= patient.contact.address %>
+      <%= patient.contact.phone %>
+      <%= patient.personaldata.birthday %>
+      <%= patient.personaldata.gender %>
+      <%= patient.personaldata.height %>
+      <%= patient.personaldata.weight %>
+      <%= patient.background %>
+
 
       <a href="/<%= patient._id %>/history">History</a> |
       <a href="/<%= patient._id %>/report/new">New Report</a> |

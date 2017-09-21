@@ -89,15 +89,15 @@ module.exports = {
     } = req.body
 
     const updates = { name, surname, email,
-      personaldata: {birthday, gender, height, weight},
+      contact: { address, phone },
+      personaldata: { birthday, gender, height, weight },
       background
     }
 
     User.findByIdAndUpdate(patientId, updates, (err, user) => {
-
+      console.log(updates)
       if (err){ return next(err); }
       return res.redirect('/patients');
     })
-    .catch(err => next(err))
   }
 }
