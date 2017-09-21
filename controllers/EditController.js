@@ -16,18 +16,17 @@ module.exports = {
       .catch(err => next(err))
     },
 
-  editUserPut: (req, res, next) => {
+  editUserPost: (req, res, next) => {
     const userId = req.params.id
-    let role = 'Doctor'
 
     const updates = {
-      name, surname, email, password, idCard, collegiate, speciality,
-      address, phone, birthday, gender, height, weight, background
+      name
     } = req.body
 
     User.findByIdAndUpdate(userId, updates, (err, user) => {
+
       if (err){ return next(err); }
-      return res.redirect(`/${userId}`);
+      return res.redirect(`/${userId}/history`);
     })
   }
 }

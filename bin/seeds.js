@@ -31,19 +31,16 @@ const admin = [
   },
   {
     name: 'Juana',
-    password: hashPass,
     idCard: '12347',
     role: 'Patient'
   },
   {
     name: 'Manolo',
-    password: hashPass,
     idCard: '12348',
     role: 'Patient'
   },
   {
     name: 'Pepe',
-    password: hashPass,
     idCard: '12349',
     role: 'Patient'
   },
