@@ -10,11 +10,11 @@ module.exports = {
         patients: patient })
       })
       .catch(err => next(err))
-},
+  },
 
   newPatientGet: (req, res, next) => { res.render('patient/new-patient', {
-    title: 'Add a new patient'}
-  )},
+    title: 'Add a new patient'})
+  },
 
   newPatientPost: (req, res, next) => {
     const idCard = req.body.idCard
@@ -64,6 +64,7 @@ module.exports = {
           pathos: pathosUser
         })
       })
+    })
   },
 
   editPatientGet: (req, res, next) => {
@@ -77,8 +78,7 @@ module.exports = {
         })
       })
       .catch(err => next(err))
-
-    },
+  },
 
   editPatientPost: (req, res, next) => {
     const patientId = req.params.id
@@ -96,5 +96,6 @@ module.exports = {
       if (err){ return next(err); }
       return res.redirect('/patients');
     })
+    .catch(err => next(err))
   }
 }
