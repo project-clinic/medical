@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const IndexController = require('../controllers/IndexController')
-const DeleteController = require('../controllers/DeleteController')
 const EditController = require('../controllers/EditController')
 
 const authRoutes = require('./auth-routes')
@@ -10,7 +9,6 @@ const reportRoutes = require('./report-routes')
 
 
 router.get('/', IndexController.index)
-router.get('/:id/delete', DeleteController.deleteUser)
 router.get('/:id/edit', EditController.editUserGet)
 router.post('/:id/edit', EditController.editUserPost)
 
