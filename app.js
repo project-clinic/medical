@@ -2,6 +2,7 @@ const app = require('express')()
 
 require('./config/express-connect')()
 require('./config/express-app')(app)
+require('./config/session')(app)
 
 const indexRoutes = require('./routes/index-routes')
 

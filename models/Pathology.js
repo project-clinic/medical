@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema   = mongoose.Schema
 
 const pathologySchema = new Schema ({
-  name: String,
-  patientId: { type: Schema.Types.ObjectId, ref:'User' },
+  name: { type: String, required:true },
+  patientId: { type: Schema.Types.ObjectId, ref:'User', required:true },
   status: {
     type: String,
     enum: ['latent', 'desease', 'remit', 'cured']
