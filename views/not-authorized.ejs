@@ -1,3 +1,7 @@
-not authorized mate!!
+<p>not authorized mate!!</p>
 
-<a href="/patients">Back to patients</a>
+<% if(userLogged.role === 'Admin') { %>
+  <a href="/doctors">Back to doctors</a>
+<% } else { %>
+  <a href="/patients">Back to patients</a>
+<% } %>
