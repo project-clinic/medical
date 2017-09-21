@@ -6,7 +6,8 @@
     <li>
       <%= doctor.name %>
       <%= doctor.surname %>
-      <%= doctor.collegiate %>
+      <%= doctor.email %>
+      <%= doctor.professional.collegiate %>
       <%= doctor.professional.speciality %>
       <a href="/<%= doctor._id %>/edit">Edit</a>
       <a href="/<%= doctor._id %>/delete">Delete</a>

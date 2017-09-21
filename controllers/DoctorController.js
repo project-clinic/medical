@@ -7,8 +7,10 @@ module.exports = {
       .then(doctor => { res.render('doctor/doctor-list', {
         title: 'Doctors list',
         doctors: doctor })
+          console.log(doctor)
       })
       .catch(err => next(err))
+
 },
 
   newDoctorGet: (req, res, next) => { res.render('doctor/new-doctor', {

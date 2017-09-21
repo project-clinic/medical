@@ -21,18 +21,28 @@ const admin = [
     name: 'Manolo',
     password: hashPass,
     idCard: '12345',
+    professional: {
+      collegiate: 'D3454656'
+    },
     role: 'Doctor'
   },
   {
-    name: 'Pepe',
+    name: 'Juanjo',
     password: hashPass,
     idCard: '12346',
+    professional: {
+      collegiate: 'LO8373763'
+    },
     role: 'Doctor'
   },
   {
     name: 'Juana',
+    password: hashPass,
     idCard: '12347',
-    role: 'Patient'
+    professional: {
+      collegiate: 'PO9009090'
+    },
+    role: 'Doctor'
   },
   {
     name: 'Manolo',
@@ -46,9 +56,8 @@ const admin = [
   },
   {
     name: 'Juana',
-    password: hashPass,
     idCard: '12340',
-    role: 'Doctor'
+    role: 'Patient'
   }
 ]
 

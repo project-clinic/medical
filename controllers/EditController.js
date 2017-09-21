@@ -19,9 +19,13 @@ module.exports = {
   editUserPost: (req, res, next) => {
     const userId = req.params.id
 
-    const updates = {
-      name
+    const {
+      name, surname, email, speciality
     } = req.body
+
+    const updates = { name, surname, email,
+      professional: {speciality}
+    }
 
     User.findByIdAndUpdate(userId, updates, (err, user) => {
 
