@@ -17,7 +17,6 @@ module.exports = {
           pathoId: req.params.id
           })
         }) 
-        console.log(patho.patientId)
       }
       else { res.render('report/new-report', {
         title: 'New Report',
