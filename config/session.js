@@ -17,4 +17,14 @@ module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
   require('./passport')
+
+  app.use((req, res, next) => {
+    if(req.session.currentUser) { 
+      res.locals.userLogged = req.session.currentUser
+      res.locals.isLoggedIn = true
+    } else { 
+      res.locals.isLoggedIn = false
+    }
+    next()
+  })
 }

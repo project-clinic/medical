@@ -14,6 +14,7 @@ module.exports = {
       }
       req.logIn(user, function(err) {
         if (err) { return next(err) }
+        req.session.currentUser = user
         if(user.role === 'Admin') { return res.redirect('/doctors') }
         else { return res.redirect('/patients') }
       });
