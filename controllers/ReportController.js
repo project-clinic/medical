@@ -7,10 +7,24 @@ const upload = multer({ dest: '../public/uploads/' })
 module.exports = {
   newReportGet: (req, res) => { 
     User.findById(req.params.id)
-    res.render('report/new-report', { 
-    title: 'New report',
-    patientId: req.params.id,
-    pathoId: undefined })
+    .then(user => {
+      if(user == undefined) { 
+        Pathology.findById(req.params.id).populate('patientId')
+        .then(patho => {
+          res.render('report/new-report', {
+          title: 'New report',
+          patient: patho.patientId,
+          pathoId: req.params.id
+          })
+        }) 
+        console.log(patho.patientId)
+      }
+      else { res.render('report/new-report', {
+        title: 'New Report',
+        patient: user,
+        pathoId: undefined
+      })}
+    })
   },
 
   newReportPost: (req, res, next) => {
@@ -31,7 +45,7 @@ module.exports = {
            doctorId }
         )
         .save()
-        .then(() => res.redirect('/patients'))
+        .then(() => res.redirect(`/${patientId}/history`))
         )
         .catch(err => next(err))
     })
