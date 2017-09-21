@@ -24,6 +24,7 @@ module.exports = {
         pathoId: undefined
       })}
     })
+    .catch(err => next(err))
   },
 
   newReportPost: (req, res, next) => {
