@@ -47,7 +47,7 @@ module.exports = {
     })
   },
 
-  historyGet: (req, res, next) => { 
+  historyGet: (req, res, next) => {
     const patientId = req.params.id
     const pathosUser = []
     User.findById(patientId)
@@ -64,6 +64,36 @@ module.exports = {
           pathos: pathosUser
         })
       })
+  },
+
+  editPatientGet: (req, res, next) => {
+    const patientId = req.params.id
+
+    User.findById(patientId)
+      .then(user => {
+        res.render('patient/edit-patient', {
+          title: 'Edit patient',
+          user: user
+        })
+      })
+      .catch(err => next(err))
+    },
+
+  editPatientPost: (req, res, next) => {
+    const patientId = req.params.id
+
+    const {
+      name, surname, email, speciality
+    } = req.body
+
+    const updates = { name, surname, email,
+      professional: {speciality}
+    }
+
+    User.findByIdAndUpdate(patientId, updates, (err, user) => {
+
+      if (err){ return next(err); }
+      return res.redirect('/patients');
     })
     .catch(err => next(err))
   }

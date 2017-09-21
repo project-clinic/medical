@@ -9,6 +9,7 @@ module.exports = {
         doctors: doctor })
       })
       .catch(err => next(err))
+
 },
 
   newDoctorGet: (req, res, next) => { res.render('doctor/new-doctor', {
@@ -45,6 +46,37 @@ module.exports = {
           .then(() => res.redirect('/doctors'))
           .catch(err => next(err))
       }
+    })
+  },
+
+  editDoctorGet: (req, res, next) => {
+    const doctorId = req.params.id
+
+    User.findById(doctorId)
+      .then(user => {
+        res.render('doctor/edit-doctor', {
+          title: 'Edit doctor',
+          user: user
+        })
+      })
+      .catch(err => next(err))
+    },
+
+  editDoctorPost: (req, res, next) => {
+    const doctorId = req.params.id
+
+    const {
+      name, surname, email, speciality
+    } = req.body
+
+    const updates = { name, surname, email,
+      professional: {speciality}
+    }
+
+    User.findByIdAndUpdate(doctorId, updates, (err, user) => {
+
+      if (err){ return next(err); }
+      return res.redirect('/doctors');
     })
   }
 }
