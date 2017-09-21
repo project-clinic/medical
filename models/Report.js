@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema   = mongoose.Schema
 
 const reportSchema = new Schema ({
-  doctorId: { type: Schema.Types.ObjectId, ref:'User' },
-  pathologyId: { type: Schema.Types.ObjectId, ref:'Pathology' },
+  doctorId: { type: Schema.Types.ObjectId, ref:'User', required:true },
+  pathologyId: { type: Schema.Types.ObjectId, ref:'Pathology', required:true },
   consultyWork: String,
   symptoms: String,
   treatment: String,
