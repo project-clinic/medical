@@ -1,3 +1,4 @@
+<h2><%= patient.name %> <%=patient.surname %></h2>
 <ul>
   <% pathos.forEach(patho => { %>
     <li>
@@ -6,4 +7,4 @@
     </li>
     <%  }) %>
   </ul>
-  <a href="/<%= patient %>/report/new">New Report && Pathology</a>
+  <a href="/<%= patient._id %>/report/new">New Report && Pathology</a>

@@ -50,16 +50,17 @@ module.exports = {
   historyGet: (req, res, next) => {
     const patientId = req.params.id
     const pathosUser = []
-    Report.find({}).populate('pathologyId')
+    User.findById(patientId)
+    .then(user => {
+      Report.find({}).populate('pathologyId')
       .then(reports => {
         reports.map(r => r.pathologyId).forEach(patho => {
           const patId = patho.patientId
           if(patId == patientId) { pathosUser.push(patho) }
         })
-        console.log(pathosUser)
         res.render('patient/history', {
           title: 'History',
-          patient: patientId,
+          patient: user,
           pathos: pathosUser
         })
       })
