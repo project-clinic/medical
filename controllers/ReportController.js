@@ -33,6 +33,15 @@ module.exports = {
       pathology, symptoms, consulty, treatment
     } = req.body
 
+    const arrayFiles = []
+    req.files.forEach( elem => {
+      const elemFiles = {
+        pic_path: `/uploads/${elem.filename}`,
+        pic_name: elem.originalname
+      }
+      arrayFiles.push(elemFiles) 
+    })
+
     let pathologyId = ''
     Pathology.findOne({ 'name':pathology, 'patientId': patientId })
     .then(patho => {
@@ -43,15 +52,13 @@ module.exports = {
           pathologyId = p._id
           new Report({
             consultyWork: consulty, treatment, symptoms, pathologyId, doctorId,
-            files: [{ 
-              pic_path: `/uploads/${req.file.filename}`, 
-              pic_name: req.file.filename 
-            }]
+            files: arrayFiles
           })
           .save()
           .then(() => res.redirect(`/${patientId}/history`))
         })
         .catch(err => next(err))
+
       } else {
         const reportsCount = patho.reportsCount + 1
         const countUpdate = { reportsCount }
@@ -60,10 +67,7 @@ module.exports = {
           new Report({
             consultyWork: consulty, treatment, symptoms, doctorId, 
             pathologyId: patho._id,
-            files: [{ 
-              pic_path: `/uploads/${req.file.filename}`, 
-              pic_name: req.file.filename 
-            }]
+            files: arrayFiles
           })
           .save()
           .then(() => res.redirect(`/${patientId}/history`))
