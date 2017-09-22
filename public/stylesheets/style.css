@@ -4,6 +4,14 @@ body {
   margin: 10 auto;
 }
 
+.left {
+  margin-left: 40px;
+}
+
+.right {
+  margin-right: 40px;
+}
+
 a {
   color: #00B7FF;
 }
