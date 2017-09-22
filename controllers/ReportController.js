@@ -1,8 +1,7 @@
-const multer = require('multer')
 const User = require('../models/User')
 const Pathology = require('../models/Pathology')
 const Report = require('../models/Report')
-const upload = multer({ dest: '../public/uploads/' })
+const multer = require('multer')
 
 module.exports = {
   newReportGet: (req, res) => { 
@@ -43,9 +42,12 @@ module.exports = {
         .then(p => { 
           pathologyId = p._id
           new Report({
-            consultyWork: consulty, treatment, symptoms, pathologyId,
-            doctorId }
-          )
+            consultyWork: consulty, treatment, symptoms, pathologyId, doctorId,
+            files: [{ 
+              pic_path: `/uploads/${req.file.filename}`, 
+              pic_name: req.file.filename 
+            }]
+          })
           .save()
           .then(() => res.redirect(`/${patientId}/history`))
         })
@@ -57,7 +59,11 @@ module.exports = {
         .then(() => {
           new Report({
             consultyWork: consulty, treatment, symptoms, doctorId, 
-            pathologyId: patho._id
+            pathologyId: patho._id,
+            files: [{ 
+              pic_path: `/uploads/${req.file.filename}`, 
+              pic_name: req.file.filename 
+            }]
           })
           .save()
           .then(() => res.redirect(`/${patientId}/history`))

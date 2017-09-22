@@ -1,4 +1,4 @@
-<form action="/<%= patient._id %>/report/new" method="post">
+<form action="/<%= patient._id %>/report/new" method="post" enctype="multipart/form-data">
   <% if(patho == undefined) { %>
     <label for="pathology">Pathology/ies</label>
     <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
@@ -19,7 +19,7 @@
             placeholder="treatment to follow"></textarea>
 
   <label for="file">Files</label>
-  <input type="file" name="file" id="files">
+  <input type="file" name="file" id="file" multiple>
 
   <% if(typeof errorMessage !== 'undefined') {%>
       <%= errorMessage %>

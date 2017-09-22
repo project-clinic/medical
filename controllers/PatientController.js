@@ -2,7 +2,6 @@ const User = require('../models/User')
 const Report = require('../models/Report')
 const Pathology = require('../models/Pathology')
 const bcrypt = require('bcrypt')
-const _ = require('lodash/array')
 
 module.exports = {
   listPatientGet: (req, res) => {
@@ -51,11 +50,10 @@ module.exports = {
 
   historyGet: (req, res, next) => {
     const patientId = req.params.id
-    Pathology.find({ 'patientId':patientId }).populate('patientId')
+    Pathology.find({ 'patientId':patientId })
     .then(pathos => {
-      User.find({ '_id':patientId })
-      .then( pat => {
-        const patient = pat[0]
+      User.findById(patientId)
+      .then( patient => {
         res.render('patient/history', { title: 'History', patient, pathos })
       })
     })
