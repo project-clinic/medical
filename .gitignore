@@ -34,3 +34,6 @@ npm-debug.log
 
 #package-lock
 package-lock.json
+
+#images/files
+/public/uploads/*
