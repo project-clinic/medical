@@ -7,6 +7,10 @@ const pathologySchema = new Schema ({
   status: {
     type: String,
     enum: ['latent', 'desease', 'remit', 'cured']
+  },
+  reportsCount: {
+    type: Number,
+    default: 1
   }
 })
 pathologySchema.set('timestamps', true)

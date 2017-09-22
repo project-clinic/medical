@@ -51,13 +51,18 @@ module.exports = {
         })
         .catch(err => next(err))
       } else {
-        new Report({
-          consultyWork: consulty, treatment, symptoms, doctorId, 
-          pathologyId: patho._id
+        const reportsCount = patho.reportsCount + 1
+        const countUpdate = { reportsCount }
+        Pathology.findByIdAndUpdate(patho._id, countUpdate)
+        .then(() => {
+          new Report({
+            consultyWork: consulty, treatment, symptoms, doctorId, 
+            pathologyId: patho._id
+          })
+          .save()
+          .then(() => res.redirect(`/${patientId}/history`))
+          .catch(err => next(err))
         })
-        .save()
-        .then(() => res.redirect(`/${patientId}/history`))
-        .catch(err => next(err))
       }
     })
   }
