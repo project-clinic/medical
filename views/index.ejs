@@ -1,9 +1,16 @@
-<p>Welcome to <%= title %></p>
+<div class="container">
+  <div class="row">
+    <div class="col l10">
+      <div class="row">
+        <% if(isLoggedIn) { %>
+          <form action="/logout" method="post">
+            <button>Log out</button>
+          </form>
+        <% } else { %>
+          <a href="/login">Log in</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
 
-<% if(isLoggedIn) { %>
-  <form action="/logout" method="post">
-    <button>Log out</button>
-  </form>
-<% } else { %>
-  <a href="/login">Log in</a>
-<% } %>
+</div>

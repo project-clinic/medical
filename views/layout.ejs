@@ -2,15 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><%= title %></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
+
   <body>
-    <h1><%= title%></h1>
+    <nav class="col l12">
+      <div class="navbar-fixed ">
+       <nav>
+         <div class="nav-wrapper">
+           <a href="#!" class="brand-logo"><%= title %></a>
+           <ul class="right hide-on-med-and-down">
+            <form action="/logout" method="post">
+                <button class="waves-effect waves-light red btn">Logout</button>
+            </form>
+           </ul>
+         </div>
+       </nav>
+     </div>
+    </nav>
     <%- body %>
+
     <script type="text/javascript" src="/javascripts/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="/javascripts/materialize.min.js"></script>
     <script src="/javascripts/main.js" charset="utf-8"></script>
