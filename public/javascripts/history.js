@@ -1,6 +1,11 @@
 $(function() {
+
+  $('.modal').modal({
+    inDuration: 150,
+    outDuration: 150
+  })
   
-  $('.collapsible').collapsible({
+  $('.collapsible-header').collapsible({
     accordion: true,
     onOpen: function(el) { 
       const $icon = $(el).children().children('i')

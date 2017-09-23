@@ -1,6 +1,7 @@
 <% reports.forEach(report => { %>
   <% if(report.pathologyId.toString() == patho._id.toString()) { %>
     <div class="collapsible-body">
+      <h5><%= report.updatedAt.toDateString() %></h5>
       <span class="report-<%= patho._id %>"><%= report.treatment %></span>
       <span class="report-<%= patho._id %>"><%= report.symptoms %></span>
       <span class="report-<%= patho._id %>"><%= report.contultyWork %></span>
