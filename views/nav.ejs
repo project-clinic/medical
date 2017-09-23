@@ -4,11 +4,14 @@
      <div class="nav-wrapper">
        <a href="#" class="brand-logo space-left">Patients Everywhere</a>
        <ul class="right hide-on-med-and-down">
-         <% if(isLoggedIn) { %>
-           <form action="/logout" method="post">
-               <button class="waves-effect waves-light red btn space-right">Logout</button>
+         <% console.log(isLoggedIn) %>
+       <% if(isLoggedIn) { %>
+         <li>
+           <form action="/logout" method="get">
+             <button class="waves-effect waves-light red btn space-right">Log out</button>
            </form>
-        <% }%>
+         </li>
+       <% } %>
        </ul>
      </div>
    </nav>

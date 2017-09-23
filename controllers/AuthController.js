@@ -4,7 +4,7 @@ const passport = require('passport')
 
 module.exports = {
   loginGet: (req, res) => {
-    
+
     res.render('auth/login', {title: 'Log in'})
   },
 
@@ -24,8 +24,9 @@ module.exports = {
     })(req, res, next)
   },
 
-  logoutPost: (req, res, next) => {
+  logoutGet: (req, res, next) => {
     req.logout()
+
     res.redirect('/login')
   }
 }

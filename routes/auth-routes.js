@@ -5,6 +5,6 @@ const AuthController = require('../controllers/AuthController')
 router.get('/login', ensureLoggedOut(), AuthController.loginGet)
 router.post('/login', ensureLoggedOut(), AuthController.loginPost)
 
-router.post('/logout', ensureLoggedIn(), AuthController.logoutPost)
+router.get('/logout', ensureLoggedIn(), AuthController.logoutGet)
 
 module.exports = router
