@@ -1,0 +1,7 @@
+<% if(isLoggedIn) { %>
+  <form action="/logout" method="post">
+    <button>Log out</button>
+  </form>
+<% } else { %>
+  <a href="/login">Log in</a>
+<% } %>
