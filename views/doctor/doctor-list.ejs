@@ -14,15 +14,9 @@
         <button data-target="edit-doctor" class="btn modal-trigger">Edit</button>
 
         <a href="/<%= user._id %>/delete">Delete</a>
-          <div id="edit-doctor" class="modal">
-            <div class="modal-content">
-              <%- include("./edit-doctor", { user }) %>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Edit</a>
-            </div>
-          </div>
-      </li>
+
+        <%- include('./edit-doctor', {user})%>
+
     <%  }) %>
   </ul>
 </div>
