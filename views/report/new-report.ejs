@@ -1,16 +1,18 @@
 <div class="modal-content row">
+  <% console.log(patho) %>
   <form action="/<%= patient._id %>/report/new" method="post" enctype="multipart/form-data"
         class="col s12">
 
     <div class="modal-content row">
-      <div class="input-field col s12">
+      <div class="input-field col s7">
         <% if(patho == undefined) { %>
-          <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
-          <label for="pathology">Pathology/ies</label>
+          <input type="text" name="pathology" id="pathology" class="validate">
+          <label for="pathology">Pathology</label>
         <% } else { %>
           <input type="text" name="pathology" value="<%= patho %>" hidden>
         <% } %>
-
+      </div>
+      <div class="input-field col s12">
         <textarea name="symptoms" id="symptoms" cols="30" rows="10" class="materialize-textarea"></textarea>
         <label for="symptoms">Symptoms</label>
       </div>

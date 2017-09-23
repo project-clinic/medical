@@ -1,63 +1,17 @@
 <div class="row">
-    <h3><%= patient.name %> <%=patient.surname %></h3>
-  <div class="col s4">
-    <h5>Contact data</h5>
-    <div class="card-panel">
-      <p>Address: <%= patient.contact.address %></p>
-      <p>Phone: <%= patient.contact.phone %></p>
-      <p>Email: <%= patient.email %></p>
-    </div>
-  </div>
-  <div class="col s1"></div>
-  <div class="col s7">
-    <h5>Background</h5>
-    <div class="card-panel"></div>
-  </div>
+  <h4><%= patient.name %> <%=patient.surname %></h4>
 </div>
 <div class="row">
-  <div class="col s4">
-    <h5>Personal data</h5>
-    <div class="card-panel">
-      <p>Age: <%= patient.personaldata.birthday %></p>
-      <p>Gender: <%= patient.personaldata.gender %></p>
-      <p>Height: <%= patient.personaldata.height %></p>
-      <p>Weight: <%= patient.personaldata.weight %></p>
+  <div class="col s9"></div>
+  <div class="col s3">
+    <a href="#modal1" class="waves-effect waves-light btn modal-trigger">New Report & Pathology</a>
+    <div id="modal1" class="modal">
+      <%- include('../report/new-report', { patho:undefined, patient }) %>
     </div>
-  </div>
-  <div class="col s1"></div>
-  <div class="col s7">
-    <h5>Notes</h5>
-    <div class="card-panel"></div>
   </div>
 </div>
 
-<h5>Pathologies</h5>
-<ul class="collapsible" data-collapsible="expandable">
-  <% pathos.forEach(patho => { %>
-    <li>
-      <div class="collapsible-header row">
-
-        <%= patho.name %>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit</a>
-      </div>
-      <div id="modal1" class="modal">
-        <%- include('../report/new-report', { patho, patient }) %>
-      </div>
-      <%- include('../report/report-list', { reports, patho }) %>
-    </li>
-  <%  }) %>
-</ul>
-  <a href="/<%= patient._id %>/report/new">New Report && Pathology</a>
-
-  <div class="row">
-      <div class="col s12 m7">
-        <div class="card-panel">
-          <span>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </span>
-        </div>
-      </div>
-    </div>
+<%- include('./personal-data', { patient, age, pathos }) %>
 
   <div class="divider"></div>
   <div class="section">
