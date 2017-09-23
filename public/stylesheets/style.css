@@ -4,11 +4,15 @@ body {
   margin: 10 auto;
 }
 
-.left {
+h2 {
+  display: inline-block;
+}
+
+.space-left {
   margin-left: 40px;
 }
 
-.right {
+.space-right {
   margin-right: 40px;
 }
 
