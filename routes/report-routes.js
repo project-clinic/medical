@@ -6,7 +6,9 @@ const multer = require('multer')
 const upload = multer({ dest: './public/uploads/' })
 
 router.get('/:id/report/new', ensureLoggedIn(), check.isDoctor(), ReportController.newReportGet)
-router.post('/:id/report/new', ensureLoggedIn(), check.isDoctor(), upload.array('file', 3), 
-            ReportController.newReportPost)
+router.post('/:id/report/new', ensureLoggedIn(), check.isDoctor(), 
+            upload.array('file', 3), ReportController.newReportPost)
+
+router.get('/reports/:id', ensureLoggedIn(), check.isDoctor(), ReportController.listReportGet)
 
 module.exports = router

@@ -46,7 +46,7 @@ module.exports = {
     Pathology.findOne({ 'name':pathology, 'patientId': patientId })
     .then(patho => {
       if(patho == undefined) {
-        new Pathology({ name: pathology, patientId: patientId })
+        new Pathology({ name: pathology.toUpperCase(), patientId: patientId })
         .save()
         .then(p => { 
           pathologyId = p._id
@@ -74,6 +74,14 @@ module.exports = {
           .catch(err => next(err))
         })
       }
+    })
+  },
+
+  listReportGet: (req, res, next) => {
+    const pathologyId = req.params.id
+    Report.find({ pathologyId })    
+    .then( reports => {
+      res.status(200).json(reports)
     })
   }
 }

@@ -1,0 +1,9 @@
+<% reports.forEach(report => { %>
+  <% if(report.pathologyId.toString() == patho._id.toString()) { %>
+    <div class="collapsible-body">
+      <span class="report-<%= patho._id %>"><%= report.treatment %></span>
+      <span class="report-<%= patho._id %>"><%= report.symptoms %></span>
+      <span class="report-<%= patho._id %>"><%= report.contultyWork %></span>
+    </div>
+  <% } %>
+<% }) %>

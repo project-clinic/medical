@@ -1,10 +1,32 @@
 <h2><%= patient.name %> <%=patient.surname %></h2>
-<ul>
+<ul class="collapsible" data-collapsible="expandable">
   <% pathos.forEach(patho => { %>
     <li>
-      <%= patho.name %>
-      <a href="/<%= patho._id %>/report/new %>">New report</a>
+      <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+        <a href="#" class="pathology-name" data-patho="<%= patho._id %>">
+          <%= patho.name %>
+        </a>
+        | <a href="/<%= patho._id %>/report/new %>">New report</a>
+      </div>
+      <%- include('report-list', { reports, patho }) %>
     </li>
-    <%  }) %>
-  </ul>
+  <%  }) %>
+</ul>
   <a href="/<%= patient._id %>/report/new">New Report && Pathology</a>
+
+
+  <div class="divider"></div>
+  <div class="section">
+    <h5>Section 1</h5>
+    <p>Stuff</p>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <h5>Section 2</h5>
+    <p>Stuff</p>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <h5>Section 3</h5>
+    <p>Stuff</p>
+  </div>

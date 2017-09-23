@@ -50,11 +50,14 @@ module.exports = {
 
   historyGet: (req, res, next) => {
     const patientId = req.params.id
-    Pathology.find({ 'patientId':patientId })
-    .then(pathos => {
-      User.findById(patientId)
-      .then( patient => {
-        res.render('patient/history', { title: 'History', patient, pathos })
+    Report.find({})
+    .then( reports => {
+      Pathology.find({ 'patientId':patientId })
+      .then( pathos => {
+        User.findById(patientId)
+        .then( patient => {
+          res.render('patient/history', { title: 'History', patient, pathos, reports })
+        })
       })
     })
   },
