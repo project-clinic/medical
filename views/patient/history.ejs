@@ -1,30 +1,17 @@
-<div class="row">
-  <h4><%= patient.name %> <%=patient.surname %></h4>
-</div>
-<div class="row">
-  <div class="col s9"></div>
-  <div class="col s3">
-    <a href="#modal1" class="waves-effect waves-light btn modal-trigger">New Report & Pathology</a>
-    <div id="modal1" class="modal">
-      <%- include('../report/new-report', { patho:undefined, patient }) %>
+<div class="container">
+  <div class="row">
+    <div class="section">
+      <div class="col s8">
+        <h4><%= patient.name %> <%=patient.surname %></h4>
+      </div>
+      <div class="col s4">
+        <br>
+        <a href="#modal1" class="waves-effect waves-light btn modal-trigger">New Report & Pathology</a>
+        <div id="modal1" class="modal">
+          <%- include('../report/new-report', { patho:undefined, patient }) %>
+        </div>
+      </div>
     </div>
   </div>
+  <%- include('./personal-data', { patient, age, pathos }) %>
 </div>
-
-<%- include('./personal-data', { patient, age, pathos }) %>
-
-  <div class="divider"></div>
-  <div class="section">
-    <h5>Section 1</h5>
-    <p>Stuff</p>
-  </div>
-  <div class="divider"></div>
-  <div class="section">
-    <h5>Section 2</h5>
-    <p>Stuff</p>
-  </div>
-  <div class="divider"></div>
-  <div class="section">
-    <h5>Section 3</h5>
-    <p>Stuff</p>
-  </div>
