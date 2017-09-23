@@ -26,7 +26,6 @@ module.exports = {
 
   logoutGet: (req, res, next) => {
     req.logout()
-
     res.redirect('/login')
   }
 }

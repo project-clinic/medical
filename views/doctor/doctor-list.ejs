@@ -2,22 +2,34 @@
 <a href="/doctor/new">New Doctor</a>
 <div class="container">
   <h2><%= title %></h2>
-  <ul>
+  <table>
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>SPECIALITY</th>
+        <th>MEDICAL IDENTITY</th>
+        <th></th>
+        <th></th>
+
+      </tr>
+    </thead>
     <% doctors.forEach(user => { %>
+    <tbody>
 
-      <li>
-        <%= user.name %>
-        <%= user.surname %>
-        <%= user.email %>
-        <%= user.professional.collegiate %>
-        <%= user.professional.speciality %>
+        <td><%= user.name %><span> <%= user.surname %></span></td>
+        <td><%= user.professional.speciality %></td>
+        <td><%= user.professional.collegiate %></td>
 
+        <td>
         <button data-target="edit-doctor" class="btn modal-trigger">Edit</button>
-
-        <a href="/<%= user._id %>/delete">Delete</a>
-
-        <%- include('./edit-doctor', {user})%>
-
+          <%- include('./edit-doctor', {user})%>
+        <td>
+        <td>
+          <form action="/<%= user._id %>/delete" method="get">
+            <button data-target="delete-doctor" class="btn modal-trigger red">Delete</button>
+          </form>
+        </td>
+    </tbody>
     <%  }) %>
-  </ul>
-</div>
+  </div>
+</table>
