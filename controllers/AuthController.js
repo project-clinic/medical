@@ -3,7 +3,10 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 
 module.exports = {
-  loginGet: (req, res) => { res.render('auth/login', {title: 'Log in'}) },
+  loginGet: (req, res) => {
+    
+    res.render('auth/login', {title: 'Log in'})
+  },
 
   loginPost: (req, res, next) => {
     passport.authenticate('local-login', (err, user, info) => {
