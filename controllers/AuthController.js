@@ -8,9 +8,9 @@ module.exports = {
   loginPost: (req, res, next) => {
     passport.authenticate('local-login', (err, user, info) => {
       if (err) { return next(err); }
-      if (!user) { return res.render('auth/login', { 
+      if (!user) { return res.render('auth/login', {
         title: 'Log in',
-        errorMessage: info.message }) 
+        errorMessage: info.message })
       }
       req.logIn(user, function(err) {
         if (err) { return next(err) }

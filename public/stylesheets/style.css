@@ -1,6 +1,19 @@
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 10 auto;
+}
+
+h2 {
+  display: inline-block;
+}
+
+.space-left {
+  margin-left: 40px;
+}
+
+.space-right {
+  margin-right: 40px;
 }
 
 a {

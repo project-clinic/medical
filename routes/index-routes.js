@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const IndexController = require('../controllers/IndexController')
+const AuthController = require('../controllers/AuthController')
 
 const authRoutes = require('./auth-routes')
 const doctorRoutes = require('./doctor-routes')
 const patientRoutes = require('./patient-routes')
 const reportRoutes = require('./report-routes')
 
-router.get('/', IndexController.index)
+router.get('/', AuthController.loginGet)
 router.use('/', authRoutes)
 router.use('/', doctorRoutes)
 router.use('/', patientRoutes)

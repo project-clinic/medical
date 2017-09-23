@@ -1,15 +1,20 @@
-<form action="/login" method="POST" id="form">
-  <label for="idCard">ID Card</label><br>
-  <input type="text" name="idCard" id="idCard" placeholder="Your Id Card">
-  <br><br>
+<div class="container">
 
-  <label for="password">Password</label><br>
-  <input type="password" name="password" placeholder="your password">
-  <br><br>
+  <h2><%= title %></h2>
+  <form action="/login" method="POST" id="form">
+    <label for="idCard">ID Card</label><br>
+    <input type="text" name="idCard" id="idCard" placeholder="Your Id Card">
+    <br><br>
 
-  <% if (typeof errorMessage !== "undefined") { %>
-    <%= errorMessage %>
-  <% } %>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" placeholder="your password">
+    <br><br>
 
-  <button>Log in</button>
-</form>
+    <% if (typeof errorMessage !== "undefined") { %>
+      <%= errorMessage %>
+    <% } %>
+
+    <button class="waves-effect waves-light btn">Log in</button>
+  </form>
+
+</div>
