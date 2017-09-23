@@ -39,7 +39,8 @@ module.exports = {
           contact: { address, phone },
           personaldata: {
             birthday, gender, height, weight
-          }
+          },
+          role: 'Patient'
         })
         newUser.save()
           .then(() => res.redirect('/patients'))
@@ -49,12 +50,21 @@ module.exports = {
   },
 
   historyGet: (req, res, next) => {
+    const thisYear = new Date().getFullYear()
+    let age
     const patientId = req.params.id
-    Pathology.find({ 'patientId':patientId })
-    .then(pathos => {
-      User.findById(patientId)
-      .then( patient => {
-        res.render('patient/history', { title: 'History', patient, pathos })
+    Report.find({}).sort({ 'updatedAt': -1 })
+    .then( reports => {
+      Pathology.find({ 'patientId':patientId }).sort({ 'updatedAt': -1 })
+      .then( pathos => {
+        User.findById(patientId)
+        .then( patient => {
+          if(patient.personaldata.birthday !== undefined) {
+            const birth = patient.personaldata.birthday.getFullYear()
+            age = thisYear - birth
+          }
+          res.render('patient/history', { title: 'History', patient, pathos, reports, age })
+        })
       })
     })
   },

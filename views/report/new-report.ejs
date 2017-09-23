@@ -1,29 +1,46 @@
-<form action="/<%= patient._id %>/report/new" method="post" enctype="multipart/form-data">
-  <% if(patho == undefined) { %>
-    <label for="pathology">Pathology/ies</label>
-    <input type="text" name="pathology" id="pathology" placeholder="patient's patology">
-  <% } else { %>
-    <input type="text" name="pathology" value="<%= patho %>" hidden>
-  <% } %>
+<div class="modal-content row">
+  <% console.log(patho) %>
+  <form action="/<%= patient._id %>/report/new" method="post" enctype="multipart/form-data"
+        class="col s12">
 
-  <label for="symptoms">Symptoms</label>
-  <textarea name="symptoms" id="symptoms" cols="30" rows="10" 
-            placeholder="reason for consultation"></textarea>
+    <div class="modal-content row">
+      <div class="input-field col s7">
+        <% if(patho == undefined) { %>
+          <input type="text" name="pathology" id="pathology" class="validate">
+          <label for="pathology">Pathology</label>
+        <% } else { %>
+          <input type="text" name="pathology" value="<%= patho %>" hidden>
+        <% } %>
+      </div>
+      <div class="input-field col s12">
+        <textarea name="symptoms" id="symptoms" cols="30" rows="10" class="materialize-textarea"></textarea>
+        <label for="symptoms">Symptoms</label>
+      </div>
 
-  <label for="consulty">Consultaty Work</label>
-  <textarea name="consulty" id="consulty" cols="30" rows="10" 
-            placeholder="what have you worked during the session"></textarea>
+      <div class="input-field col s12">
+        <textarea name="consulty" id="consulty" cols="30" rows="10" class="materialize-textarea"></textarea>
+        <label for="consulty">Consultaty Work</label>
+      </div>
+      <div class="input-field col s12">
+        <textarea name="treatment" id="treatment" cols="30" rows="10" class="materialize-textarea"></textarea>
+        <label for="treatment">Treatment</label>
+      </div>
+      <div class="file-field col s12">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="file" multiple>
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload from one to three files">
+        </div>
 
-  <label for="treatment">Treatment</label>
-  <textarea name="treatment" id="treatment" cols="30" rows="10"
-            placeholder="treatment to follow"></textarea>
-
-  <label for="file">Files</label>
-  <input type="file" name="file" id="file" multiple>
-
-  <% if(typeof errorMessage !== 'undefined') {%>
-      <%= errorMessage %>
-  <% } %>
-
-  <button>New Report</button>
-</form>
+        <% if(typeof errorMessage !== 'undefined') {%>
+            <%= errorMessage %>
+        <% } %>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </div>
+  </form>
+</div>

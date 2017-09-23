@@ -32,7 +32,8 @@ const userSchema = new Schema ({
     height: Number,
     weight: Number
   },
-  background: String
+  background: String,
+  notes: String
 })
 userSchema.set('timestamps', true)
 
