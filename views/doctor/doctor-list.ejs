@@ -1,7 +1,7 @@
 
 <a href="/doctor/new">New Doctor</a>
 <div class="container">
-  <h2 class="space-left"><%= title %></h2>
+  <h2><%= title %></h2>
   <ul>
     <% doctors.forEach(user => { %>
       <li>
@@ -12,13 +12,14 @@
         <%= user.professional.speciality %>
 
         <button data-target="edit-doctor" class="btn modal-trigger">Edit</button>
+
         <a href="/<%= user._id %>/delete">Delete</a>
           <div id="edit-doctor" class="modal">
             <div class="modal-content">
               <%- include("./edit-doctor", { user }) %>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Edit</a>
+              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Edit</a>
             </div>
           </div>
       </li>
