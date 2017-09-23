@@ -50,9 +50,9 @@ module.exports = {
 
   historyGet: (req, res, next) => {
     const patientId = req.params.id
-    Report.find({})
+    Report.find({}).sort({ 'updatedAt': -1 })
     .then( reports => {
-      Pathology.find({ 'patientId':patientId })
+      Pathology.find({ 'patientId':patientId }).sort({ 'updatedAt': -1 })
       .then( pathos => {
         User.findById(patientId)
         .then( patient => {
