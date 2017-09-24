@@ -6,9 +6,9 @@
        <ul class="right hide-on-med-and-down">
         <% if(isLoggedIn) { %>
           <% if(userLogged.role == 'Doctor') { %>
-            <li class="active"><a href="/patients">PATIENTS</a></li>
+            <li><a href="/patients">PATIENTS</a></li>
           <% } else { %>
-            <li class="active"><a href="/doctors">DOCTORS</a></li>
+            <li><a href="/doctors">DOCTORS</a></li>
           <% } %>
           <li>
             <form action="/logout" method="post">
