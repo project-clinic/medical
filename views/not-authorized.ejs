@@ -1,7 +1,14 @@
-<p>not authorized mate!!</p>
-
-<% if(userLogged.role === 'Admin') { %>
-  <a href="/doctors">Back to doctors</a>
-<% } else { %>
-  <a href="/patients">Back to patients</a>
-<% } %>
+<div class="container">
+  <div class="row">
+    <div class="col s3"></div>
+    <div class="col s6">
+        <h2>Not authorized mate!!</h2>
+        <br>
+        <% if(userLogged.role === 'Admin') { %>
+          <a class="btn waves-effect waves-light" href="/doctors">Back to doctors</a>
+        <% } else { %>
+          <a class="btn waves-effect waves-light" href="/patients">Back to patients</a>
+        <% } %>
+    </div>
+  </div>
+</div>

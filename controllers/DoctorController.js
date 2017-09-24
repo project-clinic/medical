@@ -12,10 +12,6 @@ module.exports = {
 
 },
 
-  newDoctorGet: (req, res, next) => { res.render('doctor/new-doctor', {
-    title: 'Add a new doctor' }
-  )},
-
   newDoctorPost: (req, res, next) => {
     const idCard = req.body.idCard
 
@@ -49,19 +45,6 @@ module.exports = {
       }
     })
   },
-
-  editDoctorGet: (req, res, next) => {
-    const doctorId = req.params.id
-
-    User.findById(doctorId)
-      .then(user => {
-        res.render('doctor/edit-doctor', {
-          title: 'Edit doctor',
-          user: user
-        })
-      })
-      .catch(err => next(err))
-    },
 
   editDoctorPost: (req, res, next) => {
     const doctorId = req.params.id

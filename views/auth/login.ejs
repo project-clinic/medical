@@ -1,21 +1,32 @@
 <div class="container">
 
-  <h2><%= title %></h2>
-
-  <form action="/login" method="POST" id="form">
-    <label for="idCard">ID Card</label><br>
-    <input type="text" name="idCard" id="idCard" placeholder="Your Id Card">
-    <br><br>
-
-    <label for="password">Password</label><br>
-    <input type="password" name="password" placeholder="your password">
-    <br><br>
-
-    <% if (typeof errorMessage !== "undefined") { %>
-      <%= errorMessage %>
-    <% } %>
-
-    <button class="waves-effect waves-light btn teal lighten-2">Log in</button>
-  </form>
-
+  <div class="row">
+    <div class="col s4"></div>
+    <div class="col s4 login">
+      <form action="/login" method="POST">
+        <div class="row">
+          <div class="center-align">
+            <h3 class="icon-color"><%= title.toUpperCase() %></h3>
+          </div>
+        </div>
+        <div class="input-field">
+          <label for="idCard">ID Card</label><br>
+          <input type="text" name="idCard" id="idCard">
+        </div>
+        <div class="input-field">
+          <label for="password">Password</label><br>
+          <input type="password" name="password" id="password">
+        </div>
+    
+        <% if (typeof errorMessage !== "undefined") { %>
+          <%= errorMessage %>
+        <% } %>
+        <div class="row">
+          <div class="center-align">
+            <button class="waves-effect waves-light btn teal lighten-2">Log in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

@@ -13,10 +13,6 @@ module.exports = {
       .catch(err => next(err))
   },
 
-  newPatientGet: (req, res, next) => { res.render('patient/new-patient', {
-    title: 'Add a new patient'})
-  },
-
   newPatientPost: (req, res, next) => {
     const idCard = req.body.idCard
 
@@ -61,7 +57,6 @@ module.exports = {
         User.findById(patientId)
         .then( patient => {
           if(patient.personaldata.birthday !== null) {
-            console.log('entro en history')
             const birth = patient.personaldata.birthday.getFullYear()
             if(typeof(birth) === 'number') { age = thisYear - birth }
           }
@@ -71,31 +66,17 @@ module.exports = {
     })
   },
 
-  editPatientGet: (req, res, next) => {
-    const patientId = req.params.id
-
-    User.findById(patientId)
-      .then(user => {
-        res.render('patient/edit-patient', {
-          title: 'Edit patient',
-          user: user
-        })
-      })
-      .catch(err => next(err))
-  },
-
   editPatientPost: (req, res, next) => {
     const patientId = req.params.id
 
     const {
-      name, surname, email, address, phone, notes,
-      birthday, gender, height, weight, background
+      name, surname, email, address, phone, notes, birthday, gender, 
+      height, weight, background
     } = req.body
 
-    const updates = { name, surname, email, notes,
+    const updates = { name, surname, email, notes, background,
       contact: { address, phone },
-      personaldata: { birthday, gender, height, weight },
-      background
+      personaldata: { birthday, gender, height, weight }
     }
 
     User.findByIdAndUpdate(patientId, updates)

@@ -1,33 +1,44 @@
-<div id="edit-doctor" class="modal">
-  <div class="modal-content row">
-    <form action="/doctor/<%= user._id %>/edit" method="post">
-      <div class="input-field">
-          <label class="active" for="name">Name</label>
-        <input type="text" name="name" id="name" value="<%= user.name %>">
-
-      <div>
-      <div class="input-field">
-        <label for="surname">Surname</label>
-        <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+<div id="<%= user._id %>" class="modal">
+  <form action="/doctor/<%= user._id %>/edit" method="post">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s4">
+          <div class="input-field">
+              <label class="active" for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%= user.name %>">
+          </div>
+        </div>
+        <div class="col s8">
+          <div class="input-field">
+            <label for="surname">Surname</label>
+            <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+          </div>
+        </div>
       </div>
-      <div class="input-field">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<%= user.email %>">
-      </div>
+      
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<%= user.email %>">
+          </div>
+        </div>
 
-      <div class="input-field">
-        <label class="active" for="speciality">Speciality</label>
-        <select name="speciality">
-          <option class="disable selected" value="General Practice">General Practice</option>
-          <option value="Cardiology">Cardiology</option>
-          <option value="Geriatric">Geriatric</option>
-          <option value="Neurology">Neurology</option>
-          <option value="Pediatric">Pediatric</option>
-          <option value="Physical Medicine">Physical Medicine</option>
-          <option value="Psychiatry">Psychiatry</option>
-          <option value="Dentist">Dentist</option>
-
-        </select>
+        <div class="col s6">
+          <div class="input-field">
+            <label class="active" for="speciality">Speciality</label>
+            <select name="speciality">
+              <option class="disable selected" value="General Practice">General Practice</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Geriatric">Geriatric</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Pediatric">Pediatric</option>
+              <option value="Physical Medicine">Physical Medicine</option>
+              <option value="Psychiatry">Psychiatry</option>
+              <option value="Dentist">Dentist</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <% if(typeof errorMessage !== 'undefined') {%>
@@ -37,6 +48,6 @@
       <div class="modal-footer col s12">
         <button type="submit" class="btn waves-effect waves-light" name="action">SUBMIT</button>
       </div>
+    </div>
     </form>
-  </div>
 </div>
