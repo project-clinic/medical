@@ -1,5 +1,7 @@
 $(function() {
 
+  $('.materialboxed').materialbox();
+
   $('ul.tabs').tabs()
 
   $('.modal').modal({

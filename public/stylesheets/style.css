@@ -23,3 +23,7 @@ a {
 .header {
   cursor: pointer;
 }
+
+.tabs .tab a {
+  color: #4db6ac;
+}

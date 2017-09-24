@@ -27,7 +27,13 @@
           <span class="report-<%= patho._id %>"><%= report.treatment %></span>
         </div>
         <div class="col s3">
-          <span>Images</span>
+          <div class="row">
+            <% report.files.forEach(elem => { %>
+              <div class="col s3">
+                <img class="materialboxed" height="60" width="60" src="<%= elem.pic_path %>">
+              </div>
+            <% }) %>
+          </div>
         </div>
       </div>
     </div>
