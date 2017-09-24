@@ -1,5 +1,7 @@
 $(function() {
 
+  $('ul.tabs').tabs()
+
   $('.modal').modal({
     inDuration: 150,
     outDuration: 150

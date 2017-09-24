@@ -30,12 +30,12 @@ module.exports = {
       }
       else {
         const {
-          name, surname, email, idCard, background,
+          name, surname, email, idCard, background, notes,
           address, phone, birthday, gender, height, weight
         } = req.body
 
         const newUser = new User({
-          name, surname, email, idCard, background,
+          name, surname, email, idCard, background, notes,
           contact: { address, phone },
           personaldata: {
             birthday, gender, height, weight
@@ -86,11 +86,11 @@ module.exports = {
     const patientId = req.params.id
 
     const {
-      name, surname, email, address, phone,
+      name, surname, email, address, phone, notes,
       birthday, gender, height, weight, background
     } = req.body
 
-    const updates = { name, surname, email,
+    const updates = { name, surname, email, notes,
       contact: { address, phone },
       personaldata: { birthday, gender, height, weight },
       background

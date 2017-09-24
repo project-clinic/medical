@@ -2,9 +2,20 @@
   <div class="navbar-fixed">
    <nav>
      <div class="nav-wrapper teal lighten-2">
-       <a href="#" class="brand-logo space-left">Patients Everywhere</a>
+       <span class="brand-logo space-left">Patients Everywhere</span>
        <ul class="right hide-on-med-and-down">
-      
+        <% if(isLoggedIn) { %>
+          <% if(userLogged.role == 'Doctor') { %>
+            <li><a href="/patients">PATIENTS</a></li>
+          <% } else { %>
+            <li><a href="/doctors">DOCTORS</a></li>
+          <% } %>
+          <li>
+            <form action="/logout" method="post">
+              <button class="waves-effect waves-light red btn space-right teal lighten-3">Log out</button>
+            </form>
+          </li>
+        <% } %>
        </ul>
      </div>
    </nav>
