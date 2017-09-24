@@ -9,27 +9,29 @@
   </section>
 </div>
 
-  <ul>
-    <% patients.forEach(patient => { %>
-      <li>
-        <%= patient.name %>
-        <%= patient.surname %>
-        <%= patient.email %>
-        <%= patient.contact.address %>
-        <%= patient.contact.phone %>
-        <%= patient.personaldata.birthday %>
-        <%= patient.personaldata.gender %>
-        <%= patient.personaldata.height %>
-        <%= patient.personaldata.weight %>
-        <%= patient.background %>
+<table>
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>CONTACT PHONE</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% patients.forEach(patient => { %>
+    <tbody>
+      <td><%= patient.name %><span> <%= patient.surname %></span></td>
+      <td><%= patient.email %></td>
+      <td><%= patient.contact.phone %></td>
+      <td><a href="/<%= patient._id %>/history">History</a></td>
+      <td><a href="/<%= patient._id %>/report/new">New Report</a></td>
+      <td><a href="/patient/<%= patient._id %>/edit">Edit</a></td>
+  <%  }) %>
+  </tbody>
+</table>
 
 
-        <a href="/<%= patient._id %>/history">History</a> |
-        <a href="/<%= patient._id %>/report/new">New Report</a> |
-        <a href="/patient/<%= patient._id %>/edit">Edit</a> |
-        <a href="/<%= patient._id %>/delete/">Delete</a>
-      </li>
-    <%  }) %>
-  </ul>
 
 </div>
