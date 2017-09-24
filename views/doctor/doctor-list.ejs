@@ -23,13 +23,13 @@
           <td><%= user.name %><span> <%= user.surname %></span></td>
           <td><%= user.professional.speciality %></td>
           <td><%= user.professional.collegiate %></td>
-          <td>
+          <td class="width-fix">
             <button data-target="edit-doctor" class="btn modal-trigger teal lighten-2">
               <i class="large material-icons teal lighten-2">edit</i>
             </button>
               <%- include('./edit-doctor', {user})%>
           </td>
-          <td>
+          <td class="width-fix">
             <form action="/<%= user._id %>/delete" method="get">
               <button data-target="delete-doctor" class="btn modal-trigger red lighten-1">
                 <i class="large material-icons">delete</i>

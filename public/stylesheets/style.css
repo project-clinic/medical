@@ -33,3 +33,7 @@ nav ul.right a:active {
   color: red;
 
 }
+
+.width-fix {
+  width: 20px;
+}
