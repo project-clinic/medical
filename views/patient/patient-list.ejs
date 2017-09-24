@@ -1,24 +1,35 @@
-<a href="/patient/new">Add New Patient</a>
+<div class="container">
+<div class="row valign-wrapper">
+  <section class="col l6">
+    <h2><%= title %></h2>
+  </section>
+  <section class="col l6 offset-l6">
+    <button data-target="new-patient" class="btn modal-trigger">New</button>
+    <%- include('./new-patient')%>
+  </section>
+</div>
 
-<ul>
-  <% patients.forEach(patient => { %>
-    <li>
-      <%= patient.name %>
-      <%= patient.surname %>
-      <%= patient.email %>
-      <%= patient.contact.address %>
-      <%= patient.contact.phone %>
-      <%= patient.personaldata.birthday %>
-      <%= patient.personaldata.gender %>
-      <%= patient.personaldata.height %>
-      <%= patient.personaldata.weight %>
-      <%= patient.background %>
+  <ul>
+    <% patients.forEach(patient => { %>
+      <li>
+        <%= patient.name %>
+        <%= patient.surname %>
+        <%= patient.email %>
+        <%= patient.contact.address %>
+        <%= patient.contact.phone %>
+        <%= patient.personaldata.birthday %>
+        <%= patient.personaldata.gender %>
+        <%= patient.personaldata.height %>
+        <%= patient.personaldata.weight %>
+        <%= patient.background %>
 
 
-      <a href="/<%= patient._id %>/history">History</a> |
-      <a href="/<%= patient._id %>/report/new">New Report</a> |
-      <a href="/patient/<%= patient._id %>/edit">Edit</a> |
-      <a href="/<%= patient._id %>/delete/">Delete</a>
-    </li>
-  <%  }) %>
-</ul>
+        <a href="/<%= patient._id %>/history">History</a> |
+        <a href="/<%= patient._id %>/report/new">New Report</a> |
+        <a href="/patient/<%= patient._id %>/edit">Edit</a> |
+        <a href="/<%= patient._id %>/delete/">Delete</a>
+      </li>
+    <%  }) %>
+  </ul>
+
+</div>
