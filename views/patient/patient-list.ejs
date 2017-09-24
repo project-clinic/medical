@@ -16,7 +16,7 @@
       <th>EMAIL</th>
       <th>CONTACT PHONE</th>
       <th>HISTORY</th>
-      <th></th>
+      <th>EDIT</th>
     </tr>
   </thead>
   <% patients.forEach(user => { %>
@@ -30,10 +30,10 @@
         </a>
       </td>
       <td class="width-fix">
-        <button data-target="<%= user._id %>" class="btn modal-trigger teal lighten-2">
-          <i class="large material-icons teal lighten-2">edit</i>
-        </button>
-        <div id="<%= user._id %>" class="modal">
+        <a class="icon-color icon-table modal-trigger" href="#modal-edit-patient">
+          <i class="small material-icons">edit</i>
+        </a>
+        <div id="modal-edit-patient" class="modal">
           <%- include('./edit-patient', { user, control: 'total' })%>
         </div>
       </td>
