@@ -13,10 +13,6 @@ module.exports = {
       .catch(err => next(err))
   },
 
-  newPatientGet: (req, res, next) => { res.render('patient/new-patient', {
-    title: 'Add a new patient'})
-  },
-
   newPatientPost: (req, res, next) => {
     const idCard = req.body.idCard
 
@@ -73,19 +69,6 @@ module.exports = {
         })
       })
     })
-  },
-
-  editPatientGet: (req, res, next) => {
-    const patientId = req.params.id
-
-    User.findById(patientId)
-      .then(user => {
-        res.render('patient/edit-patient', {
-          title: 'Edit patient',
-          user: user
-        })
-      })
-      .catch(err => next(err))
   },
 
   editPatientPost: (req, res, next) => {

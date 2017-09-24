@@ -1,15 +1,15 @@
 <div class="container">
-<div class="row valign-wrapper">
-  <section class="col l6">
-    <h2><%= title %></h2>
-  </section>
-  <section class="col l6 offset-l6">
-    <button data-target="new-patient" class="btn modal-trigger teal lighten-2">New</button>
-    <%- include('./new-patient')%>
-  </section>
-</div>
+  <div class="row valign-wrapper">
+    <section class="col l6">
+      <h3><%= title.toUpperCase() %></h3>
+    </section>
+    <section class="col l6 offset-l6">
+      <button data-target="new-patient" class="btn modal-trigger teal lighten-2 right">New</button>
+      <%- include('./new-patient')%>
+    </section>
+  </div>
 
-<table>
+<table class="borderer">
   <thead>
     <tr>
       <th>NAME</th>
@@ -19,24 +19,27 @@
       <th>EDIT</th>
     </tr>
   </thead>
-  <% patients.forEach(user => { %>
-    <tbody>
-      <td><%= user.name %><span> <%= user.surname %></span></td>
-      <td><%= user.email %></td>
-      <td><%= user.contact.phone %></td>
-      <td class="width-fix">
-        <a class="icon-color icon-table" href="/<%= user._id %>/history">
-          <i class="small material-icons">assignment</i>
-        </a>
-      </td>
-      <td class="width-fix">
-        <a class="icon-color icon-table modal-trigger" href="#modal-edit-patient">
-          <i class="small material-icons">edit</i>
-        </a>
-        <div id="modal-edit-patient" class="modal">
-          <%- include('./edit-patient', { user, control: 'total' })%>
-        </div>
-      </td>
-    </tbody>
-  <%  }) %>
+  <tbody>
+    <% patients.forEach(user => { %>
+      <tr>
+        <td><%= user.name %><span> <%= user.surname %></span></td>
+        <td><%= user.email %></td>
+        <td><%= user.contact.phone %></td>
+        <td class="width-fix">
+          <a class="icon-color icon-table" href="/<%= user._id %>/history">
+            <i class="small material-icons">assignment</i>
+          </a>
+        </td>
+        <td class="width-fix">
+          <a class="icon-color icon-table modal-trigger" href="#modal-edit-patient">
+            <i class="small material-icons">edit</i>
+          </a>
+          <div id="modal-edit-patient" class="modal">
+            <%- include('./edit-patient', { user, control: 'total' })%>
+          </div>
+        </td>
+      </tr>
+    <%  }) %>
+  </tbody>
 </table>
+</div>

@@ -6,10 +6,8 @@ const DeleteController = require('../controllers/DeleteController')
 
 router.get('/doctors', ensureLoggedIn(), check.isAdmin(), DoctorController.listDoctorGet)
 
-router.get('/doctor/new', ensureLoggedIn(), check.isAdmin(), DoctorController.newDoctorGet)
 router.post('/doctor/new', ensureLoggedIn(), check.isAdmin(), DoctorController.newDoctorPost)
 
-router.get('/doctor/:id/edit', ensureLoggedIn(), check.isAdmin(), DoctorController.editDoctorGet)
 router.post('/doctor/:id/edit', ensureLoggedIn(), check.isAdmin(), DoctorController.editDoctorPost)
 
 router.get('/:id/delete', ensureLoggedIn(), check.isAdmin(), DeleteController.deleteUser)

@@ -32,6 +32,10 @@ a {
   width: 20px;
 }
 
+.icon-color-red {
+  color: #f44336;
+}
+
 .icon-color {
   color: #4db6ac;
 }
@@ -42,5 +46,15 @@ a {
 
 .not-show {
   display: none;
+}
 
+.login {
+  padding: 30px;
+  margin: 200px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.login form {
+  margin: 30px;
 }

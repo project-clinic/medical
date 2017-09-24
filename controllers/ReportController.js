@@ -4,28 +4,6 @@ const Report = require('../models/Report')
 const multer = require('multer')
 
 module.exports = {
-  newReportGet: (req, res) => { 
-    User.findById(req.params.id)
-    .then(user => {
-      if(user == undefined) { 
-        Pathology.findById(req.params.id).populate('patientId')
-        .then(patho => {
-          res.render('report/new-report', {
-          title: 'New report',
-          patient: patho.patientId,
-          patho: patho.name
-          })
-        }) 
-      }
-      else { res.render('report/new-report', {
-        title: 'New Report',
-        patient: user,
-        patho: undefined
-      })}
-    })
-    .catch(err => next(err))
-  },
-
   newReportPost: (req, res, next) => {
     const patientId = req.params.id
     const doctorId = req.user._id
@@ -74,14 +52,6 @@ module.exports = {
           .catch(err => next(err))
         })
       }
-    })
-  },
-
-  listReportGet: (req, res, next) => {
-    const pathologyId = req.params.id
-    Report.find({ pathologyId })    
-    .then( reports => {
-      res.status(200).json(reports)
     })
   }
 }
