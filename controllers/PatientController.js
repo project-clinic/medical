@@ -20,6 +20,12 @@ module.exports = {
   newPatientPost: (req, res, next) => {
     const idCard = req.body.idCard
 
+    let height = req.body.height
+    height = parseFloat(height).toFixed(2)
+
+    let weight = req.body.weight
+    weight = parseFloat(weight).toFixed(2)
+
     User.findOne({ idCard }, (err, user) => {
       if(err) { return next(err) }
       if(user) {
