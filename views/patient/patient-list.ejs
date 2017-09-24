@@ -4,7 +4,7 @@
     <h2><%= title %></h2>
   </section>
   <section class="col l6 offset-l6">
-    <button data-target="new-patient" class="btn modal-trigger">New</button>
+    <button data-target="new-patient" class="btn modal-trigger teal lighten-2">New</button>
     <%- include('./new-patient')%>
   </section>
 </div>
@@ -15,7 +15,7 @@
       <th>NAME</th>
       <th>EMAIL</th>
       <th>CONTACT PHONE</th>
-      <th></th>
+      <th>HISTORY</th>
       <th></th>
     </tr>
   </thead>
@@ -24,12 +24,15 @@
       <td><%= user.name %><span> <%= user.surname %></span></td>
       <td><%= user.email %></td>
       <td><%= user.contact.phone %></td>
-      <td><a href="/<%= user._id %>/history">History</a></td>
       <td>
-
-      <button data-target="edit-patient" class="btn modal-trigger">
-      <i class="large material-icons">edit</i>
-      </button>
+        <a href="/<%= user._id %>/history">
+          <i class="small material-icons teal lighten-2">assignment</i>
+        </a>
+      </td>
+      <td>
+        <button data-target="edit-patient" class="btn modal-trigger teal lighten-2">
+          <i class="large material-icons teal lighten-2">edit</i>
+        </button>
         <%- include('./edit-patient', {user})%>
     </td>
   <%  }) %>
