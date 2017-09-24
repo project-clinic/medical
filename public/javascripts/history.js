@@ -1,6 +1,6 @@
 $(function() {
 
-  $('.materialboxed').materialbox();
+  $('.materialboxed').materialbox()
 
   $('ul.tabs').tabs()
 

@@ -39,3 +39,8 @@ a {
 .icon-table {
   padding-left: 16px;
 }
+
+.not-show {
+  display: none;
+
+}

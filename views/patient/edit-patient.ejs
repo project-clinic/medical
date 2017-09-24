@@ -1,22 +1,26 @@
-<div id="edit-patient" class="modal">
-  <div class="modal-content">
-    <form action="/patient/<%= user._id %>/edit" method="post">
+<div class="modal-content">
+  <form action="/patient/<%= user._id %>/edit" method="post">
+    <% if(control == 'total') { %>
+    <div class="input-field">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="<%= user.name %>">
+    </div>
 
-      <div class="input-field">
-        <label for="name">Name</label>
+    <div class="input-field">
+      <label for="surname">Surname</label>
+      <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+    </div>
+    <% } else { %>
+      <div class="input-field not-show">
         <input type="text" name="name" id="name" value="<%= user.name %>">
       </div>
 
-      <div class="input-field">
-        <label for="surname">Surname</label>
+      <div class="input-field not-show">
         <input type="text" name="surname" id="surname" value="<%= user.surname %>">
       </div>
+    <% } %>
 
-      <div class="input-field">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<%= user.email %>">
-      </div>
-
+    <% if(control == 'contact' || control == 'total') { %>
       <div class="input-field">
         <label for="address">Address</label>
         <input type="text" name="address" id="address" value="<%= user.contact.address %>">
@@ -27,6 +31,25 @@
         <input type="number" name="phone" id="phone" value="<%= user.contact.phone %>">
       </div>
 
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= user.email %>">
+      </div>
+    <% } else { %>
+      <div class="input-field not-show">
+        <input type="text" name="address" id="address" value="<%= user.contact.address %>">
+      </div>
+
+      <div class="input-field not-show">
+        <input type="number" name="phone" id="phone" value="<%= user.contact.phone %>">
+      </div>
+
+      <div class="input-field not-show">
+        <input type="email" name="email" id="email" value="<%= user.email %>">
+      </div>
+    <% } %>
+
+    <% if(control == 'personal' || control == 'total') { %>
       <div class="input-field">
         <input type="date" name="birthday" id="birthday" value="<%= user.personaldata.birthday %>">
       </div>
@@ -48,25 +71,50 @@
         <label for="weight">Weight</label>
         <input type="number" name="weight" id="weight" value="<%= user.personaldata.weight %>">
       </div>
+    <% } else { %>
+      <div class="input-field not-show">
+        <input type="date" name="birthday" id="birthday" value="<%= user.personaldata.birthday %>">
+      </div>
 
+      <div class="input-field not-show">
+        <select name="gender" id="gender" value="<%= user.personaldata.gender%>">
+          <option class="disable selected" value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+      </div>
+
+      <div class="input-field not-show">
+        <input type="number" name="height" id="height" value="<%= user.personaldata.height %>">
+      </div>
+
+      <div class="input-field not-show">
+        <input type="number" name="weight" id="weight" value="<%= user.personaldata.weight %>">
+      </div>
+    <% } %>
+
+    <% if(control == 'notes' || control == 'total') { %>
       <div class="input-field">
         <label for="notes">Notes</label>
         <textarea class="materialize-textarea" type="text" name="notes" id="notes" value="<%= user.notes %>"></textarea>
       </div>
+    <% } else { %>
+      <div class="input-field not-show">
+        <textarea class="materialize-textarea" type="text" name="notes" id="notes" value="<%= user.notes %>"></textarea>
+      </div>
+    <% } %>
 
+    <% if(control == 'background' || control == 'total') { %>
       <div class="input-field">
         <label for="background">Background history</label>
         <textarea class="materialize-textarea" type="text" name="background" id="background" value="<%= user.background %>"></textarea>
       </div>
-
-    <% if(typeof errorMessage !== 'undefined') {%>
-        <%= errorMessage %>
+    <% } else { %>
+      <div class="input-field not-show">
+        <textarea class="materialize-textarea" type="text" name="background" id="background" value="<%= user.background %>"></textarea>
+      </div>
     <% } %>
-
     <div class="modal-footer">
-      <button type="submit" class="btn waves-effect waves-light" name="action">SUBMIT</button>
+      <button type="submit" class="btn waves-effect waves-light">SUBMIT</button>
     </div>
-
-    </form>
-  </div>
+  </form>
 </div>
