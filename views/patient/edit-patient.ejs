@@ -1,43 +1,69 @@
+<div id="edit-patient" class="modal">
+  <div class="modal-content">
+    <h3>Edit <span><%= user.name %><span> <%= user.surname %></span></h3>
+    <form action="/patient/<%= user._id %>/edit" method="post">
 
-<form action="/patient/<%= user._id %>/edit" method="post">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" value="<%= user.name %>">
+      <div class="input-field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= user.name %>">
+      </div>
 
-  <label for="surname">Surname</label>
-  <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+      <div class="input-field">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+      </div>
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" value="<%= user.email %>">
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= user.email %>">
+      </div>
 
-  <label for="address">Address</label>
-  <input type="text" name="address" id="address" value="<%= user.contact.address %>">
+      <div class="input-field">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address" value="<%= user.contact.address %>">
+      </div>
 
-  <label for="phone">Phone</label>
-  <input type="number" name="phone" id="phone" value="<%= user.contact.phone %>">
+      <div class="input-field">
+        <label for="phone">Phone</label>
+        <input type="number" name="phone" id="phone" value="<%= user.contact.phone %>">
+      </div>
 
-  <label for="birthday">Birthday</label>
-  <input type="date" name="birthday" id="birthday" value="<%= user.personaldata.birthday %>">
+      <div class="input-field">
+        <label for="birthday">Birthday</label>
+        <input type="date" name="birthday" id="birthday" value="<%= user.personaldata.birthday %>">
+      </div>
 
-  <label for="gender">Gender</label>
-  <select name="gender" id="gender" value="<%= user.personaldata.gender%>">
-    <option value="Female">Female</option>
-    <option value="Male" selected>Male</option>
-  </select>
+      <div class="input-field">
+        <label class="active" for="gender">Gender</label>
+        <select name="gender" id="gender" value="<%= user.personaldata.gender%>">
+          <option class="disable selected" value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+      </div>
 
-  <label for="height">Height</label>
-  <input type="number" name="height" id="height" value="<%= user.personaldata.height %>">
+      <div class="input-field">
+        <label for="height">Height</label>
+        <input type="number" name="height" id="height" value="<%= user.personaldata.height %>">
+      </div>
 
-  <label for="weight">Weight</label>
-  <input type="number" name="weight" id="weight" value="<%= user.personaldata.weight %>">
+      <div class="input-field">
+        <label for="weight">Weight</label>
+        <input type="number" name="weight" id="weight" value="<%= user.personaldata.weight %>">
+      </div>
 
-  <label for="background">Background history</label>
-  <textarea type="text" name="background" id="background" rows="3" value="<%= user.background %>"></textarea>
+      <div class="input-field">
+        <label for="background">Background history</label>
+        <textarea type="text" name="background" id="background" rows="3" value="<%= user.background %>"></textarea>
+      </div>
 
+    <% if(typeof errorMessage !== 'undefined') {%>
+        <%= errorMessage %>
+    <% } %>
 
-<% if(typeof errorMessage !== 'undefined') {%>
-    <%= errorMessage %>
-<% } %>
+    <div class="modal-footer">
+      <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUBMIT</button>
+    </div>
 
-<button>Edit</button>
-
-</form>
+    </form>
+  </div>
+</div>
