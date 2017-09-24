@@ -24,12 +24,16 @@
         <td><%= user.professional.collegiate %></td>
 
         <td>
-          <button data-target="edit-doctor" class="btn modal-trigger">Edit</button>
+          <button data-target="edit-doctor" class="btn modal-trigger">
+          <i class="large material-icons">edit</i>
+          </button>
             <%- include('./edit-doctor', {user})%>
         <td>
         <td>
           <form action="/<%= user._id %>/delete" method="get">
-            <button data-target="delete-doctor" class="btn modal-trigger red">Delete</button>
+            <button data-target="delete-doctor" class="btn modal-trigger red">
+              <i class="large material-icons">delete</i>
+            </button>
           </form>
         </td>
     </tbody>
