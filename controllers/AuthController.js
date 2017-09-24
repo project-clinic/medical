@@ -4,7 +4,6 @@ const passport = require('passport')
 
 module.exports = {
   loginGet: (req, res) => {
-
     res.render('auth/login', {title: 'Log in'})
   },
 

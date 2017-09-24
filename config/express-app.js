@@ -8,6 +8,12 @@ const layout = require("express-ejs-layouts")
 const rootPath = require('path').normalize(__dirname + '/../')
 
 module.exports = app => {
+  app.use((req,res,next) => {
+    res.locals.title = 'Patients Everywhere'
+    res.locals.user = req.user
+    next()
+  })
+  
   app.set('views', rootPath + 'views')
   app.set('view engine', 'ejs')
   app.set('layout','layout')
@@ -20,8 +26,4 @@ module.exports = app => {
   app.use(cookieParser())
   app.use(express.static(rootPath + 'public'))
 
-  app.use((req,res,next) => {
-    res.locals.title = 'Patients Everywhere'
-    next()
-  })
 }
