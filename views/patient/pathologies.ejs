@@ -1,16 +1,27 @@
-<ul class="collapsible" data-collapsible="expandable">
-  <% pathos.forEach(patho => { %>
+<% pathos.forEach(patho => { %>
+  <ul class="collapsible" data-collapsible="expandable">
     <li>
       <div class="collapsible-header">
-        <%= patho.name %>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal2">New Report</a>
+        <div class="col s3">
+          <h6><b><%= patho.name %></b></h6>
+        </div>
+        <div class="col s7"></div>
+        <div class="col s2">
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal2">New Report</a>
+        </div>
       </div>
       <div id="modal2" class="modal">
-        <%- include('../report/new-report', { patho, patient }) %>
+        <%- include('../report/new-report', { patho: patho.name, patient }) %>
       </div>
       <div class="collapsible-body">
+        <!-- <div class="row">
+          <div class="col s2"><b>Date</b></div>
+          <div class="col s3"><b>Symptoms</b></div>
+          <div class="col s4"><b>Consulty Work</b></div>
+          <div class="col s3"><b>Treatment</b></div>
+        </div> -->
         <%- include('../report/report-list', { reports, patho }) %>
       </div>
     </li>
-  <%  }) %>
-</ul>
+  </ul>
+<%  }) %>

@@ -23,8 +23,9 @@ module.exports = {
     })(req, res, next)
   },
 
-  logoutGet: (req, res, next) => {
+  logoutPost: (req, res, next) => {
     req.logout()
-    res.redirect('/login')
+    req.session.destroy()
+    res.redirect('/')
   }
 }

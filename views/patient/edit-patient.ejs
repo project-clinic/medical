@@ -1,6 +1,5 @@
 <div id="edit-patient" class="modal">
   <div class="modal-content">
-    <h3>Edit <span><%= user.name %><span> <%= user.surname %></span></h3>
     <form action="/patient/<%= user._id %>/edit" method="post">
 
       <div class="input-field">
@@ -29,7 +28,6 @@
       </div>
 
       <div class="input-field">
-        <label for="birthday">Birthday</label>
         <input type="date" name="birthday" id="birthday" value="<%= user.personaldata.birthday %>">
       </div>
 
@@ -52,8 +50,13 @@
       </div>
 
       <div class="input-field">
+        <label for="notes">Notes</label>
+        <textarea class="materialize-textarea" type="text" name="notes" id="notes" value="<%= user.notes %>"></textarea>
+      </div>
+
+      <div class="input-field">
         <label for="background">Background history</label>
-        <textarea type="text" name="background" id="background" rows="3" value="<%= user.background %>"></textarea>
+        <textarea class="materialize-textarea" type="text" name="background" id="background" value="<%= user.background %>"></textarea>
       </div>
 
     <% if(typeof errorMessage !== 'undefined') {%>

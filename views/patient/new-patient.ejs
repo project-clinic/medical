@@ -1,6 +1,5 @@
 <div id="new-patient" class="modal">
   <div class="modal-content">
-    <h3>Add patient</h3>
     <form action="/patient/new" method="post">
 
       <div class="input-field">
@@ -17,11 +16,9 @@
         <label for="idCard">Id Card</label>
         <input type="text" name="idCard" id="idCard">
       </div>
-
-      <%# <div class="input-field">
-        <label for="birthday">Birthday</label>
-        <input type="date" name="birthday" id="birthday">
-      </div>%>
+      <div class="input-field">
+        <input type="date" name="birthday" id="">
+      </div>
 
       <div class="input-field">
         <label class="active" for="gender">Gender</label>
@@ -54,6 +51,11 @@
       <div class="input-field">
         <label for="phone">Phone</label>
         <input type="number" name="phone" id="phone">
+      </div>
+
+      <div class="input-field">
+        <label for="notes">Notes</label>
+        <textarea class="materialize-textarea" type="text" name="notes" id="notes"></textarea>
       </div>
 
       <div class="input-field">
