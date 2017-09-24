@@ -28,12 +28,6 @@ a {
   color: #4db6ac;
 }
 
-nav ul.right a:active {
-  text-decoration: underline;
-  color: red;
-
-}
-
 .width-fix {
   width: 20px;
 }
