@@ -1,32 +1,78 @@
+<div class="divider"></div>
 <div class="row">
   <div class="col s4">
     <h5>Contact data</h5>
     <div class="card-panel">
-      <p><b>Id Card</b>: <%= patient.idCard %></p>
-      <p><b>Address</b>: <%= patient.contact.address %></p>
-      <p><b>Phone</b>: <%= patient.contact.phone %></p>
-      <p><b>Email</b>: <%= patient.email %></p>
+      <div class="row">
+        <div class="col s11">
+          <p><b>Id Card</b>: <%= patient.idCard %></p>
+          <p><b>Address</b>: <%= patient.contact.address %></p>
+          <p><b>Phone</b>: <%= patient.contact.phone %></p>
+          <p><b>Email</b>: <%= patient.email %></p>
+        </div>
+        <div class="col s1">
+          <a href="#modal-contact" class="icon-color modal-trigger right"><i class="material-icons">create</i></a>
+          <div id="modal-contact" class="modal">
+            <%- include('./edit-patient', { user: patient, control: 'contact' })%>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col s4">
     <h5>Personal data</h5>
     <div class="card-panel">
-      <p><b>Age</b>: <%= age %></p>
-      <p><b>Gender</b>: <%= patient.personaldata.gender %></p>
-      <p><b>Height</b>: <%= patient.personaldata.height %></p>
-      <p><b>Weight</b>: <%= patient.personaldata.weight %></p>
+      <div class="row">
+        <div class="col s11">
+          <p><b>Age</b>: <%= age %></p>
+          <p><b>Gender</b>: <%= patient.personaldata.gender %></p>
+          <p><b>Height</b>: <%= patient.personaldata.height %></p>
+          <p><b>Weight</b>: <%= patient.personaldata.weight %></p>
+        </div>
+        <div class="col s1">
+          <a href="#modal-personal" class="icon-color modal-trigger right"><i class="material-icons">create</i></a>
+          <div id="modal-personal" class="modal">
+            <%- include('./edit-patient', { user: patient, control: 'personal' })%>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col s4">
     <h5>Notes</h5>
-    <div class="card-panel"></div>
+    <div class="card-panel">
+      <div class="row">
+        <div class="col s11">
+          <%= patient.notes %>
+        </div>
+        <div class="col s1">
+          <a href="#modal-notes" class="icon-color modal-trigger right"><i class="material-icons">create</i></a>
+          <div id="modal-notes" class="modal">
+            <%- include('./edit-patient', { user: patient, control: 'notes' })%>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col s12">
       <h5>Background</h5>
-      <div class="card-panel"></div>
+      <div class="card-panel">
+        <div class="row">
+          <div class="col s11">
+            <%= patient.background %>
+          </div>
+          <div class="col s1">
+            <a href="#modal-background" class="icon-color modal-trigger right"><i class="material-icons">create</i></a>
+            <div id="modal-background" class="modal">
+              <%- include('./edit-patient', { user: patient, control: 'background' })%>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="divider"></div>
 <div class="row">
   <div class="col s12">
     <h5>Pathologies</h5>

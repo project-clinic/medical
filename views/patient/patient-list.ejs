@@ -30,13 +30,15 @@
         </a>
       </td>
       <td>
-        <button data-target="edit-patient" class="btn modal-trigger teal lighten-2">
+        <button data-target="<%= user._id %>" class="btn modal-trigger teal lighten-2">
           <i class="large material-icons teal lighten-2">edit</i>
         </button>
-        <%- include('./edit-patient', {user})%>
-    </td>
+        <div id="<%= user._id %>" class="modal">
+          <%- include('./edit-patient', { user, control: 'total' })%>
+        </div>
+      </td>
+    </tbody>
   <%  }) %>
-  </tbody>
 </table>
 
 

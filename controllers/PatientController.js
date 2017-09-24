@@ -59,9 +59,10 @@ module.exports = {
       .then( pathos => {
         User.findById(patientId)
         .then( patient => {
-          if(patient.personaldata.birthday !== undefined) {
+          if(patient.personaldata.birthday !== null) {
+            console.log('entro en history')
             const birth = patient.personaldata.birthday.getFullYear()
-            age = thisYear - birth
+            if(typeof(birth) === 'number') { age = thisYear - birth }
           }
           res.render('patient/history', { title: 'History', patient, pathos, reports, age })
         })
@@ -96,9 +97,10 @@ module.exports = {
       background
     }
 
-    User.findByIdAndUpdate(patientId, updates, (err, user) => {
-      if (err){ return next(err); }
-      return res.redirect('/patients');
+    User.findByIdAndUpdate(patientId, updates)
+    .then(user => {
+      return res.redirect(`/${patientId}/history`)
     })
+    .catch(err => next(err))
   }
 }
