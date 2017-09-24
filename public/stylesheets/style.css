@@ -37,3 +37,11 @@ nav ul.right a:active {
 .width-fix {
   width: 20px;
 }
+
+.icon-color {
+  color: #4db6ac;
+}
+
+.icon-table {
+  padding-left: 16px;
+}
