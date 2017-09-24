@@ -1,39 +1,73 @@
-<form action="/patient/new" method="post">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" placeholder="patient's name">
+<div id="new-patient" class="modal">
+  <div class="modal-content">
+    <h3>Add patient</h3>
+    <form action="/patient/new" method="post">
 
-  <label for="surname">Surname</label>
-  <input type="text" name="surname" id="surname" placeholder="patient's surname">
+      <div class="input-field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+      </div>
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" placeholder="patient's email">
+      <div class="input-field">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname">
+      </div>
 
-  <label for="idCard">Id Card</label>
-  <input type="text" name="idCard" id="idCard" placeholder="patient's id card">
+      <div class="input-field">
+        <label for="idCard">Id Card</label>
+        <input type="text" name="idCard" id="idCard">
+      </div>
 
-  <label for="address">Address</label>
-  <input type="text" name="address" id="address" placeholder="patient's address">
+      <%# <div class="input-field">
+        <label for="birthday">Birthday</label>
+        <input type="date" name="birthday" id="birthday">
+      </div>%>
 
-  <label for="phone">Phone</label>
-  <input type="number" name="phone" id="phone" placeholder="patient's phone">
+      <div class="input-field">
+        <label class="active" for="gender">Gender</label>
+        <select name="gender" id="gender">
+          <option value="Female">Female</option>
+          <option value="Male" selected>Male</option>
+        </select>
+      </div>
 
-  <label for="birthday">Birthday</label>
-  <input type="date" name="birthday" id="birthday" placeholder="patient's birthday">
+      <div class="input-field">
+        <label for="height">Height</label>
+        <input type="number" name="height" id="height">
+      </div>
 
-  <label for="gender">Gender</label>
-  <select name="gender" id="gender">
-    <option value="Female">Female</option>
-    <option value="Male" selected>Male</option>
-  </select>
+      <div class="input-field">
+        <label for="weight">Weight</label>
+        <input type="number" name="weight" id="weight">
+      </div>
 
-  <label for="height">Height</label>
-  <input type="number" name="height" id="height" placeholder="actual height">
+      <div class="input-field">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address">
+      </div>
 
-  <label for="weight">Weight</label>
-  <input type="number" name="weight" id="weight" placeholder="actual weight">
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+      </div>
 
-  <label for="background">Background history</label>
-  <textarea type="text" name="background" id="background" rows="3" placeholder="write his background"></textarea>
+      <div class="input-field">
+        <label for="phone">Phone</label>
+        <input type="number" name="phone" id="phone">
+      </div>
 
-  <button>Add patient</button>
-</form>
+      <div class="input-field">
+        <label for="background">Background history</label>
+        <textarea class="materialize-textarea" type="text" name="background" id="background"></textarea>
+      </div>
+
+      <% if(typeof errorMessage !== 'undefined') {%>
+          <%= errorMessage %>
+      <% } %>
+
+      <div class="modal-footer">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUMBIT</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -7,7 +7,7 @@ module.exports = {
   listPatientGet: (req, res) => {
     User.find({ 'role': 'Patient'})
       .then(patient => { res.render('patient/patient-list', {
-        title: 'Patients list',
+        title: 'Patients',
         patients: patient })
       })
       .catch(err => next(err))

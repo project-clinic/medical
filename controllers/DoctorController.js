@@ -5,7 +5,7 @@ module.exports = {
   listDoctorGet: (req, res, next) => {
     User.find({ 'role': 'Doctor'})
       .then(doctor => { res.render('doctor/doctor-list', {
-        title: 'Doctors list',
+        title: 'Doctors',
         doctors: doctor })
       })
       .catch(err => next(err))
@@ -34,9 +34,10 @@ module.exports = {
 
         const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
         const newUser = new User({
-          name, surname, idCard, collegiate,
+          name, surname, idCard, 
           professional: {
-            speciality
+            speciality,
+            collegiate
           },
           password: hashPass,
           role: 'Doctor'

@@ -1,39 +1,57 @@
-<form action="/doctor/new" method="post">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" placeholder="doctor's name">
+<div id="new-doctor" class="modal">
+  <div class="modal-content">
+    <h3>Add doctor</h3>
+    <form action="/doctor/new" method="post">
 
-  <label for="surname">Surname</label>
-  <input type="text" name="surname" id="surname" placeholder="doctor's surname">
+      <div class="input-field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="doctor's name">
+      </div>
+      <div class="input-field">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" placeholder="doctor's surname">
+      </div>
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="example@mail.com">
+      </div>
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" placeholder="example@mail.com">
+      <div class="input-field">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+      </div>
 
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password">
+      <div class="input-field">
+        <label for="idCard">Id Card</label>
+        <input type="text" name="idCard" id="idCard" placeholder="Id Card">
+      </div>
 
-  <label for="idCard">Id Card</label>
-  <input type="text" name="idCard" id="idCard" placeholder="Id Card">
+      <div class="input-field">
+        <label for="collegiate">Collegiate Number</label>
+        <input type="text" name="collegiate" id="collegiate" placeholder="collegiate number">
+      </div>
 
-  <label for="collegiate">Collegiate Number</label>
-  <input type="text" name="collegiate" id="collegiate" placeholder="collegiate number">
+      <div class="input-field">
+        <label class="active" for="speciality">Speciality</label>
+        <select name="speciality">
+          <option value="Cardiology">Cardiology</option>
+          <option value="Geriatric">Geriatric</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Pediatric">Pediatric</option>
+          <option value="Physical Medicine">Physical Medicine</option>
+          <option value="Psychiatry">Psychiatry</option>
+          <option value="Dentist">Dentist</option>
+          <option value="General Practice" selected>General Practice</option>
+        </select>
+      </div>
 
-  <label for="speciality">Speciality</label>
-  <select name="speciality">
-    <option value="Cardiology">Cardiology</option>
-    <option value="Geriatric">Geriatric</option>
-    <option value="Neurology">Neurology</option>
-    <option value="Pediatric">Pediatric</option>
-    <option value="Physical Medicine">Physical Medicine</option>
-    <option value="Psychiatry">Psychiatry</option>
-    <option value="Dentist">Dentist</option>
-    <option value="General Practice" selected>General Practice</option>
+      <% if(typeof errorMessage !== 'undefined') {%>
+          <%= errorMessage %>
+      <% } %>
 
-  </select>
-
-  <% if(typeof errorMessage !== 'undefined') {%>
-      <%= errorMessage %>
-  <% } %>
-
-  <button>Add Doctor</button>
-
-</form>
+      <div class="modal-footer">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+</div>

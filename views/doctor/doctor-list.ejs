@@ -1,28 +1,42 @@
-
-<a href="/doctor/new">New Doctor</a>
 <div class="container">
-  <h2><%= title %></h2>
-  <ul>
-    <% doctors.forEach(user => { %>
-      <li>
-        <%= user.name %>
-        <%= user.surname %>
-        <%= user.email %>
-        <%= user.professional.collegiate %>
-        <%= user.professional.speciality %>
-
-        <button data-target="edit-doctor" class="btn modal-trigger">Edit</button>
-
-        <a href="/<%= user._id %>/delete">Delete</a>
-          <div id="edit-doctor" class="modal">
-            <div class="modal-content">
-              <%- include("./edit-doctor", { user }) %>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Edit</a>
-            </div>
-          </div>
-      </li>
-    <%  }) %>
-  </ul>
-</div>
+  <div class="row valign-wrapper">
+    <section class="col l6">
+      <h2><%= title %></h2>
+    </section>
+    <section class="col l6 offset-l6">
+      <button data-target="new-doctor" class="btn modal-trigger teal lighten-2">New</button>
+      <%- include('./new-doctor')%>
+    </section>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>SPECIALITY</th>
+          <th>COLLEGIATE</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% doctors.forEach(user => { %>
+      <tbody>
+          <td><%= user.name %><span> <%= user.surname %></span></td>
+          <td><%= user.professional.speciality %></td>
+          <td><%= user.professional.collegiate %></td>
+          <td>
+            <button data-target="edit-doctor" class="btn modal-trigger teal lighten-2">
+              <i class="large material-icons teal lighten-2">edit</i>
+            </button>
+              <%- include('./edit-doctor', {user})%>
+          </td>
+          <td>
+            <form action="/<%= user._id %>/delete" method="get">
+              <button data-target="delete-doctor" class="btn modal-trigger red lighten-1">
+                <i class="large material-icons">delete</i>
+              </button>
+            </form>
+          </td>
+      </tbody>
+      <%  }) %>
+    </div>
+  </table>

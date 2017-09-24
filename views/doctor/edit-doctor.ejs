@@ -1,29 +1,43 @@
-<form action="/doctor/<%= user._id %>/edit" method="post">
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name" value="<%= user.name %>">
+<div id="edit-doctor" class="modal">
+  <div class="modal-content">
+    <h3>Edit <span><%= user.name %><span> <%= user.surname %></span></h3>
+    <form action="/doctor/<%= user._id %>/edit" method="post">
+      <div class="input-field">
+          <label class="active" for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= user.name %>">
 
-  <label for="surname">Surname</label>
-  <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+      <div>
+      <div class="input-field">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" value="<%= user.surname %>">
+      </div>
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= user.email %>">
+      </div>
 
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" value="<%= user.email %>">
+      <div class="input-field">
+        <label class="active" for="speciality">Speciality</label>
+        <select name="speciality">
+          <option class="disable selected" value="General Practice">General Practice</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Geriatric">Geriatric</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Pediatric">Pediatric</option>
+          <option value="Physical Medicine">Physical Medicine</option>
+          <option value="Psychiatry">Psychiatry</option>
+          <option value="Dentist">Dentist</option>
 
-  <label for="speciality">Speciality</label>
-  <select name="speciality">
-    <option value="Cardiology">Cardiology</option>
-    <option value="Geriatric">Geriatric</option>
-    <option value="Neurology">Neurology</option>
-    <option value="Pediatric">Pediatric</option>
-    <option value="Physical Medicine">Physical Medicine</option>
-    <option value="Psychiatry">Psychiatry</option>
-    <option value="Dentist">Dentist</option>
-    <option value="General Practice">General Practice</option>
-  </select>
+        </select>
+      </div>
 
-  <% if(typeof errorMessage !== 'undefined') {%>
-      <%= errorMessage %>
-  <% } %>
+      <% if(typeof errorMessage !== 'undefined') {%>
+          <%= errorMessage %>
+      <% } %>
 
-<button>Edit</button>
-
-</form>
+      <div class="modal-footer">
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,24 +1,44 @@
-<a href="/patient/new">Add New Patient</a>
+<div class="container">
+<div class="row valign-wrapper">
+  <section class="col l6">
+    <h2><%= title %></h2>
+  </section>
+  <section class="col l6 offset-l6">
+    <button data-target="new-patient" class="btn modal-trigger teal lighten-2">New</button>
+    <%- include('./new-patient')%>
+  </section>
+</div>
 
-<ul>
-  <% patients.forEach(patient => { %>
-    <li>
-      <%= patient.name %>
-      <%= patient.surname %>
-      <%= patient.email %>
-      <%= patient.contact.address %>
-      <%= patient.contact.phone %>
-      <%= patient.personaldata.birthday %>
-      <%= patient.personaldata.gender %>
-      <%= patient.personaldata.height %>
-      <%= patient.personaldata.weight %>
-      <%= patient.background %>
-
-
-      <a href="/<%= patient._id %>/history">History</a> |
-      <a href="/<%= patient._id %>/report/new">New Report</a> |
-      <a href="/patient/<%= patient._id %>/edit">Edit</a> |
-      <a href="/<%= patient._id %>/delete/">Delete</a>
-    </li>
+<table>
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>CONTACT PHONE</th>
+      <th>HISTORY</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% patients.forEach(user => { %>
+    <tbody>
+      <td><%= user.name %><span> <%= user.surname %></span></td>
+      <td><%= user.email %></td>
+      <td><%= user.contact.phone %></td>
+      <td>
+        <a href="/<%= user._id %>/history">
+          <i class="small material-icons teal lighten-2">assignment</i>
+        </a>
+      </td>
+      <td>
+        <button data-target="edit-patient" class="btn modal-trigger teal lighten-2">
+          <i class="large material-icons teal lighten-2">edit</i>
+        </button>
+        <%- include('./edit-patient', {user})%>
+    </td>
   <%  }) %>
-</ul>
+  </tbody>
+</table>
+
+
+
+</div>

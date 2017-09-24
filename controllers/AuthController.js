@@ -23,7 +23,7 @@ module.exports = {
     })(req, res, next)
   },
 
-  logoutPost: (req, res, next) => {
+  logoutGet: (req, res, next) => {
     req.logout()
     req.session.destroy()
     if(req.session == undefined) { console.log('hola') }
