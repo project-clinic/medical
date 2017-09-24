@@ -1,8 +1,6 @@
 <div id="new-doctor" class="modal">
   <div class="modal-content">
-    <h3>Add doctor</h3>
     <form action="/doctor/new" method="post">
-
       <div class="input-field">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" placeholder="doctor's name">
@@ -50,7 +48,7 @@
       <% } %>
 
       <div class="modal-footer">
-        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUBMIT</button>
+        <button type="submit" class="btn waves-effect waves-light" name="action">SUBMIT</button>
       </div>
     </form>
   </div>

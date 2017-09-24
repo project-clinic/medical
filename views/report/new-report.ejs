@@ -5,7 +5,7 @@
       <div class="input-field col s7">
         <% if(patho == undefined) { %>
           <input type="text" name="pathology" id="pathology" class="validate">
-          <label for="pathology">Pathology</label>
+          <label for="pathology">Pathology*</label>
         <% } else { %>
           <input type="text" name="pathology" value="<%= patho %>" hidden>
         <% } %>
@@ -37,8 +37,9 @@
         <% } %>
       </div>
     </div>
-    <div class="modal-footer col s12">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-    </div>
+
   </form>
+  <div class="modal-footer col s12">
+    <button type="submit" class="btn waves-effect waves-light" name="action">SUBMIT</button>
+  </div>
 </div>

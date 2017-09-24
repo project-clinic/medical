@@ -24,12 +24,12 @@
       <td><%= user.name %><span> <%= user.surname %></span></td>
       <td><%= user.email %></td>
       <td><%= user.contact.phone %></td>
-      <td>
-        <a href="/<%= user._id %>/history">
-          <i class="small material-icons teal lighten-2">assignment</i>
+      <td class="width-fix">
+        <a class="icon-color icon-table" href="/<%= user._id %>/history">
+          <i class="small material-icons">assignment</i>
         </a>
       </td>
-      <td>
+      <td class="width-fix">
         <button data-target="<%= user._id %>" class="btn modal-trigger teal lighten-2">
           <i class="large material-icons teal lighten-2">edit</i>
         </button>
@@ -40,7 +40,3 @@
     </tbody>
   <%  }) %>
 </table>
-
-
-
-</div>

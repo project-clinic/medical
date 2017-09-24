@@ -1,6 +1,5 @@
 <div id="edit-doctor" class="modal">
-  <div class="modal-content">
-    <h3>Edit <span><%= user.name %><span> <%= user.surname %></span></h3>
+  <div class="modal-content row">
     <form action="/doctor/<%= user._id %>/edit" method="post">
       <div class="input-field">
           <label class="active" for="name">Name</label>
@@ -35,8 +34,8 @@
           <%= errorMessage %>
       <% } %>
 
-      <div class="modal-footer">
-        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">SUBMIT</button>
+      <div class="modal-footer col s12">
+        <button type="submit" class="btn waves-effect waves-light" name="action">SUBMIT</button>
       </div>
     </form>
   </div>
