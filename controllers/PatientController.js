@@ -60,7 +60,6 @@ module.exports = {
         User.findById(patientId)
         .then( patient => {
           if(patient.personaldata.birthday !== null) {
-            console.log('entro en history')
             const birth = patient.personaldata.birthday.getFullYear()
             if(typeof(birth) === 'number') { age = thisYear - birth }
           }
