@@ -4,7 +4,8 @@
       <h2><%= title %></h2>
     </section>
     <section class="col l6 offset-l6">
-      <a class="waves-effect waves-light btn" href="/doctor/new">New</a>
+      <button data-target="new-doctor" class="btn modal-trigger">New</button>
+      <%- include('./new-doctor')%>
     </section>
   </div>
   <table>
