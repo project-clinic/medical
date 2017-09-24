@@ -34,9 +34,10 @@ module.exports = {
 
         const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
         const newUser = new User({
-          name, surname, idCard, collegiate,
+          name, surname, idCard, 
           professional: {
-            speciality
+            speciality,
+            collegiate
           },
           password: hashPass,
           role: 'Doctor'
