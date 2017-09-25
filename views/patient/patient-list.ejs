@@ -3,6 +3,9 @@
     <section class="col s6 row">
       <div class="col s6">
         <h4><%= title.toUpperCase() %></h4>
+        <% if(typeof errorMessage !== 'undefined') {%>
+            <span><%= errorMessage %></span>
+        <% } %>
       </div>
       <div class="input-field col s5">
         <input id="search" type="text" class="validate">
