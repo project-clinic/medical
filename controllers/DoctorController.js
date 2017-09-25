@@ -50,17 +50,15 @@ module.exports = {
     const doctorId = req.params.id
 
     const {
-      name, surname, email, speciality
+      name, surname, email, speciality, collegiate
     } = req.body
 
     const updates = { name, surname, email,
-      professional: {speciality}
+      professional: { collegiate, speciality }
     }
 
-    User.findByIdAndUpdate(doctorId, updates, (err, user) => {
-
-      if (err){ return next(err); }
-      return res.redirect('/doctors');
-    })
+    User.findByIdAndUpdate(doctorId, updates)
+    .then(user => res.redirect('/doctors'))
+    .catch(err => next(err))
   }
 }

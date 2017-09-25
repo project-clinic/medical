@@ -1,15 +1,21 @@
 <div class="container">
   <div class="row valign-wrapper">
-    <section class="col l6">
-      <h3><%= title.toUpperCase() %></h3>
+    <section class="col s6 row">
+      <div class="col s6">
+        <h3><%= title.toUpperCase() %></h3>
+      </div>
+      <div class="input-field col s5">
+        <input id="search" type="text" class="validate">
+        <label for="search">Search</label>
+      </div>
     </section>
-    <section class="col l6 offset-l6">
-      <button data-target="new-patient" class="btn modal-trigger teal lighten-2 right">New</button>
+    <section class="col s6 offset-l2 row">
+      <button data-target="new-doctor" class="btn modal-trigger teal lighten-2 right">New</button>
       <%- include('./new-patient')%>
     </section>
   </div>
 
-<table class="borderer">
+<table class="responsive-table">
   <thead>
     <tr>
       <th>NAME</th>
