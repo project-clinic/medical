@@ -25,7 +25,7 @@ module.exports = {
     User.findOne({ idCard }, (err, user) => {
       if(err) { return next(err) }
       if(user) {
-        res.render('patient/new-patient', {
+        res.render('patient/patient-list', {
           title: 'Add a new patient',
           errorMessage: 'Id Card already exist'
         })
