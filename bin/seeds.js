@@ -16,26 +16,6 @@ const admin = [
     password: hashPass,
     idCard: '12344',
     role: 'Admin'
-  },
-  {
-    name: 'Manolo',
-    password: hashPass,
-    email: 'manolo@manolo.com',
-    idCard: '12345',
-    professional: {
-      collegiate: 'D3454656',
-      speciality: 'Cardiology'
-    },
-    role: 'Doctor'
-  },
-  {
-    name: 'Juana',
-    idCard: '12340',
-    email: 'juana@juana.com',
-    personaldata: {
-      gender: 'Female'
-    }
-    role: 'Patient'
   }
 ]
 
